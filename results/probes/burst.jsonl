@@ -1,0 +1,2 @@
+{"probe": "burst", "model": "moss/fastlane-1", "n": 30, "wall_s": 0.38, "status_counts": {"200": 10, "429": 20}, "retry_after": ["1"], "err_codes": ["\"rate_limit_exceeded\""], "ttft_p50": 354.8, "ttft_p95": 364.5, "total_p50": 361.9, "total_p95": 369.1}
+{"probe": "burst", "model": "anthropic/claude-haiku-5.5", "n": 30, "wall_s": 0.8, "status_counts": {"200": 30}, "retry_after": [], "err_codes": [], "ttft_p50": 715.5, "ttft_p95": 764.1, "total_p50": 721.5, "total_p95": 768.5}

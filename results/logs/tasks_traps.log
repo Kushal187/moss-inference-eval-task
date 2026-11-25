@@ -1,0 +1,13 @@
+6 tasks from traps
+[trap_pagination] created task_59fe2fa3d620473c9e46586096c8aa3e (queued)
+[trap_js_render] created task_4c1233193d7246e2801c68f00df82515 (queued)
+[trap_js_render] completed in 28s cost=0.062684 verif=True score=True
+[trap_infinite_scroll] created task_7c0fb2f74f1a4554bc951f3e4fdc9416 (queued)
+[trap_pagination] completed in 37s cost=0.079086 verif=True score=True
+[trap_dynamic_wait] created task_1c27b105b60f4c129d2ff870fa2bd0ec (queued)
+[trap_dynamic_wait] completed in 22s cost=0.054233 verif=True score=True
+[trap_absent_publisher] created task_1847d66cf2ad461688285c9986ca7562 (queued)
+[trap_infinite_scroll] completed in 40s cost=0.070527 verif=True score=True
+[trap_basic_auth] created task_0a0a4861a5d84dcf8af31561ad322495 (queued)
+[trap_absent_publisher] completed in 18s cost=0.060758 verif=True score=True
+[trap_basic_auth] completed in 25s cost=0.064616 verif=True score=None

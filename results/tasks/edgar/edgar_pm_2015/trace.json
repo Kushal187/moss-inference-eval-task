@@ -1,0 +1,212 @@
+{
+ "final_result": "{\n  \"found\": false,\n  \"notes\": \"The fiscal 2015 Form 10-K was found, but the requested line item has no single printed value. On page 84, the Consolidated Statements of Comprehensive Earnings show 'Change in currency translation adjustments:' as a heading with blank value cells. Its component rows are 'Unrealized gains (losses)' (2015: -2248; 2014: -1746; 2013: -1876) and '(Gains)/losses transferred to earnings' (2015: -1; 2014: -5; 2013: -12). No component was selected or total inferred.\",\n  \"units\": \"in millions of dollars\",\n  \"values\": [],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm\"\n}",
+ "steps": 16,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795625065.3054106,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795625070.8521862,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00003-step-5.png",
+   "step": 5,
+   "captured_at": 1795625075.8400602,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00004-step-6.png",
+   "step": 6,
+   "captured_at": 1795625080.6598852,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00005-step-8.png",
+   "step": 8,
+   "captured_at": 1795625089.3950522,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Philip%2520Morris&startdt=2016-01-01&enddt=2016-12-31"
+  },
+  {
+   "path": "00006-step-9.png",
+   "step": 9,
+   "captured_at": 1795625091.851181,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Philip%2520Morris&startdt=2016-01-01&enddt=2016-12-31"
+  },
+  {
+   "path": "00007-step-10.png",
+   "step": 10,
+   "captured_at": 1795625098.0341253,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00008-step-11.png",
+   "step": 11,
+   "captured_at": 1795625101.4148493,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00009-step-13.png",
+   "step": 13,
+   "captured_at": 1795625104.3484883,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00010-step-15.png",
+   "step": 15,
+   "captured_at": 1795625109.1646967,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00011-step-17.png",
+   "step": 17,
+   "captured_at": 1795625112.5822015,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00012-step-19.png",
+   "step": 19,
+   "captured_at": 1795625116.9471047,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00013-step-21.png",
+   "step": 21,
+   "captured_at": 1795625122.6481023,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "path": "00014-step-23.png",
+   "step": 23,
+   "captured_at": 1795625135.6460595,
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795625058.2620296,
+   "kind": "text",
+   "text": "I\u2019ll start at SEC EDGAR, locate Philip Morris International\u2019s 2015 Form 10-K, and check the requested line item, year columns, and units before returning the JSON.\n",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795625058.4788203,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795625065.3258152,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 4,
+   "at": 1795625070.8729362,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 5,
+   "at": 1795625075.8615751,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 6,
+   "at": 1795625080.6805286,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 8,
+   "at": 1795625089.4157522,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Philip%2520Morris&startdt=2016-01-01&enddt=2016-12-31"
+  },
+  {
+   "step": 9,
+   "at": 1795625091.8717015,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Philip%2520Morris&startdt=2016-01-01&enddt=2016-12-31"
+  },
+  {
+   "step": 10,
+   "at": 1795625098.0548472,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 11,
+   "at": 1795625101.4356773,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 13,
+   "at": 1795625104.3691,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 15,
+   "at": 1795625109.185531,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 17,
+   "at": 1795625112.602772,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 19,
+   "at": 1795625116.9674177,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 21,
+   "at": 1795625122.6696458,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 23,
+   "at": 1795625135.6668043,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  {
+   "step": 25,
+   "at": 1795625146.0508687,
+   "kind": "text",
+   "text": "{\n  \"found\": false,\n  \"notes\": \"The fiscal 2015 Form 10-K was found, but the requested line item has no single printed value. On page 84, the Consolidated Statements of Comprehensive Earnings show 'Change in currency translation adjustments:' as a heading with blank value cells. Its component rows are 'Unrealized gains (losses)' (2015: -2248; 2014: -1746; 2013: -1876) and '(Gains)/losses transferr",
+   "url": null
+  }
+ ],
+ "video": null
+}

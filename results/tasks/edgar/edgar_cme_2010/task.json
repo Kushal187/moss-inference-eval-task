@@ -1,0 +1,117 @@
+{
+ "id": "task_a1d5b00664d14d34aad6883ccf8d5e10",
+ "object": "task",
+ "status": "completed",
+ "title": "Extract CME Group 10-K Receivables",
+ "goal": "Using SEC EDGAR, open CME Group Inc.'s annual report on Form 10-K for fiscal year 2010. In that filing, find the line item \"Receivables from brokers (a component of other current assets)\" and report its value for each of these periods: 2010 and 2009. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_cme_2010"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": true,
+   "notes": "CME Group Inc.'s fiscal year 2010 Form 10-K, Note 5, Other Current Assets, lists 'Receivables from brokers' at December 31.",
+   "units": "in millions",
+   "values": [
+    {
+     "value": 11.2,
+     "period": "2010"
+    },
+    {
+     "value": 8.8,
+     "period": "2009"
+    }
+   ],
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1156375/000119312511050252/d10k.htm"
+  },
+  "output_text": "{\n  \"found\": true,\n  \"notes\": \"CME Group Inc.'s fiscal year 2010 Form 10-K, Note 5, Other Current Assets, lists 'Receivables from brokers' at December 31.\",\n  \"units\": \"in millions\",\n  \"values\": [\n    {\"period\": \"2010\", \"value\": 11.2},\n    {\"period\": \"2009\", \"value\": 8.8}\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/1156375/000119312511050252/d10k.htm\"\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.142921,
+   "total_usd": 0.143254,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 9,
+  "cost_usd": 0.142921,
+  "model_calls": 10,
+  "input_tokens": 189387,
+  "output_tokens": 1378,
+  "browser_minutes": 0.86,
+  "browser_seconds": 52,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 152981
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:45:51.117592+00:00",
+ "started_at": "2026-11-25T16:45:51.137028+00:00",
+ "finished_at": "2026-11-25T16:46:43.833284+00:00",
+ "files_expire_at": "2026-12-02T16:46:43.833284+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

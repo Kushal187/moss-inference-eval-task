@@ -1,0 +1,237 @@
+{
+ "llama-3.3-70b (baseline)": {
+  "zero_shot": {
+   "n": 150,
+   "correct": 80,
+   "fabricated_without_evidence": 11,
+   "correct_without_evidence": 10,
+   "abstention_no_evidence": 10,
+   "abstention": 10,
+   "wrong_despite_evidence": 29,
+   "fabrication_rate_when_evidence_missing": 0.524,
+   "wrong_rate_when_evidence_present": 0.244,
+   "hallucinated_total": 40
+  },
+  "ALL": {
+   "n": 600,
+   "correct": 325,
+   "fabricated_without_evidence": 41,
+   "correct_without_evidence": 40,
+   "abstention_no_evidence": 43,
+   "abstention": 31,
+   "wrong_despite_evidence": 120,
+   "fabrication_rate_when_evidence_missing": 0.488,
+   "wrong_rate_when_evidence_present": 0.252,
+   "hallucinated_total": 161
+  },
+  "few_shot": {
+   "n": 150,
+   "correct": 80,
+   "correct_without_evidence": 11,
+   "abstention_no_evidence": 11,
+   "abstention": 8,
+   "wrong_despite_evidence": 31,
+   "fabricated_without_evidence": 9,
+   "fabrication_rate_when_evidence_missing": 0.45,
+   "wrong_rate_when_evidence_present": 0.261,
+   "hallucinated_total": 40
+  },
+  "cot": {
+   "n": 150,
+   "correct": 83,
+   "abstention_no_evidence": 12,
+   "correct_without_evidence": 9,
+   "abstention": 7,
+   "wrong_despite_evidence": 29,
+   "fabricated_without_evidence": 10,
+   "fabrication_rate_when_evidence_missing": 0.455,
+   "wrong_rate_when_evidence_present": 0.244,
+   "hallucinated_total": 39
+  },
+  "structured": {
+   "n": 150,
+   "correct": 82,
+   "fabricated_without_evidence": 11,
+   "correct_without_evidence": 10,
+   "abstention_no_evidence": 10,
+   "abstention": 6,
+   "wrong_despite_evidence": 31,
+   "fabrication_rate_when_evidence_missing": 0.524,
+   "wrong_rate_when_evidence_present": 0.261,
+   "hallucinated_total": 42
+  }
+ },
+ "moss/fastlane-1": {
+  "zero_shot": {
+   "n": 150,
+   "correct_without_evidence": 13,
+   "abstention": 16,
+   "abstention_no_evidence": 12,
+   "correct": 68,
+   "fabricated_without_evidence": 6,
+   "wrong_despite_evidence": 35,
+   "fabrication_rate_when_evidence_missing": 0.333,
+   "wrong_rate_when_evidence_present": 0.294,
+   "hallucinated_total": 41
+  },
+  "ALL": {
+   "n": 600,
+   "correct_without_evidence": 46,
+   "fabricated_without_evidence": 37,
+   "abstention": 41,
+   "correct": 321,
+   "wrong_despite_evidence": 114,
+   "abstention_no_evidence": 41,
+   "fabrication_rate_when_evidence_missing": 0.474,
+   "wrong_rate_when_evidence_present": 0.239,
+   "hallucinated_total": 151
+  },
+  "cot": {
+   "n": 150,
+   "fabricated_without_evidence": 21,
+   "wrong_despite_evidence": 37,
+   "correct": 81,
+   "correct_without_evidence": 10,
+   "abstention": 1,
+   "fabrication_rate_when_evidence_missing": 1.0,
+   "wrong_rate_when_evidence_present": 0.311,
+   "hallucinated_total": 58
+  },
+  "structured": {
+   "n": 150,
+   "correct": 91,
+   "abstention_no_evidence": 13,
+   "correct_without_evidence": 12,
+   "wrong_despite_evidence": 21,
+   "fabricated_without_evidence": 6,
+   "abstention": 7,
+   "fabrication_rate_when_evidence_missing": 0.316,
+   "wrong_rate_when_evidence_present": 0.176,
+   "hallucinated_total": 27
+  },
+  "few_shot": {
+   "n": 150,
+   "correct": 81,
+   "correct_without_evidence": 11,
+   "abstention": 17,
+   "abstention_no_evidence": 16,
+   "fabricated_without_evidence": 4,
+   "wrong_despite_evidence": 21,
+   "fabrication_rate_when_evidence_missing": 0.2,
+   "wrong_rate_when_evidence_present": 0.176,
+   "hallucinated_total": 25
+  }
+ },
+ "anthropic/claude-haiku-5.5": {
+  "zero_shot": {
+   "n": 150,
+   "abstention_no_evidence": 18,
+   "correct": 70,
+   "abstention": 18,
+   "wrong_despite_evidence": 31,
+   "correct_without_evidence": 8,
+   "fabricated_without_evidence": 5,
+   "fabrication_rate_when_evidence_missing": 0.217,
+   "wrong_rate_when_evidence_present": 0.261,
+   "hallucinated_total": 36
+  },
+  "ALL": {
+   "n": 600,
+   "abstention_no_evidence": 65,
+   "abstention": 64,
+   "correct": 318,
+   "correct_without_evidence": 40,
+   "wrong_despite_evidence": 94,
+   "fabricated_without_evidence": 19,
+   "fabrication_rate_when_evidence_missing": 0.226,
+   "wrong_rate_when_evidence_present": 0.197,
+   "hallucinated_total": 113
+  },
+  "cot": {
+   "n": 150,
+   "abstention": 13,
+   "correct": 89,
+   "abstention_no_evidence": 15,
+   "correct_without_evidence": 11,
+   "fabricated_without_evidence": 5,
+   "wrong_despite_evidence": 17,
+   "fabrication_rate_when_evidence_missing": 0.25,
+   "wrong_rate_when_evidence_present": 0.143,
+   "hallucinated_total": 22
+  },
+  "few_shot": {
+   "n": 150,
+   "abstention_no_evidence": 17,
+   "correct": 69,
+   "abstention": 23,
+   "correct_without_evidence": 10,
+   "wrong_despite_evidence": 27,
+   "fabricated_without_evidence": 4,
+   "fabrication_rate_when_evidence_missing": 0.19,
+   "wrong_rate_when_evidence_present": 0.227,
+   "hallucinated_total": 31
+  },
+  "structured": {
+   "n": 150,
+   "abstention_no_evidence": 15,
+   "correct": 90,
+   "correct_without_evidence": 11,
+   "fabricated_without_evidence": 5,
+   "wrong_despite_evidence": 19,
+   "abstention": 10,
+   "fabrication_rate_when_evidence_missing": 0.25,
+   "wrong_rate_when_evidence_present": 0.16,
+   "hallucinated_total": 24
+  }
+ },
+ "openai/gpt-6-luna": {
+  "few_shot": {
+   "n": 150,
+   "abstention_no_evidence": 15,
+   "correct": 84,
+   "wrong_despite_evidence": 28,
+   "correct_without_evidence": 10,
+   "abstention": 7,
+   "fabricated_without_evidence": 6,
+   "fabrication_rate_when_evidence_missing": 0.286,
+   "wrong_rate_when_evidence_present": 0.235,
+   "hallucinated_total": 34
+  },
+  "ALL": {
+   "n": 450,
+   "abstention_no_evidence": 43,
+   "wrong_despite_evidence": 82,
+   "correct": 253,
+   "correct_without_evidence": 34,
+   "fabricated_without_evidence": 16,
+   "abstention": 22,
+   "fabrication_rate_when_evidence_missing": 0.271,
+   "wrong_rate_when_evidence_present": 0.23,
+   "hallucinated_total": 98
+  },
+  "cot": {
+   "n": 150,
+   "wrong_despite_evidence": 22,
+   "correct": 89,
+   "abstention_no_evidence": 14,
+   "correct_without_evidence": 12,
+   "abstention": 8,
+   "fabricated_without_evidence": 5,
+   "fabrication_rate_when_evidence_missing": 0.263,
+   "wrong_rate_when_evidence_present": 0.185,
+   "hallucinated_total": 27
+  },
+  "zero_shot": {
+   "n": 150,
+   "correct": 80,
+   "abstention_no_evidence": 14,
+   "wrong_despite_evidence": 32,
+   "correct_without_evidence": 12,
+   "fabricated_without_evidence": 5,
+   "abstention": 7,
+   "fabrication_rate_when_evidence_missing": 0.263,
+   "wrong_rate_when_evidence_present": 0.269,
+   "hallucinated_total": 37
+  }
+ }
+}

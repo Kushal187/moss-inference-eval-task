@@ -1,0 +1,107 @@
+{
+ "id": "task_ce583b34495742858a18987ce1a0067c",
+ "object": "task",
+ "status": "completed",
+ "title": "Lockheed Martin 2014 10-K Space Tourism",
+ "goal": "Using SEC EDGAR, open Lockheed Martin Corporation's annual report on Form 10-K for fiscal year 2014. In that filing, find the line item \"Space Tourism segment net sales\" and report its value for each of these periods: 2014 and 2013. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_neg_lineitem"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": false,
+   "notes": "Located Lockheed Martin Corporation's Form 10-K for the fiscal year ended December 31, 2014. A full-text check found no occurrence of 'tourism' and no line item 'Space Tourism segment net sales'. The filing reports a 'Space Systems' segment instead; its figures have not been substituted. The requested values for 2014 and 2013 could not be found.",
+   "values": [],
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  "output_text": "{\n  \"found\": false,\n  \"notes\": \"Located Lockheed Martin Corporation's Form 10-K for the fiscal year ended December 31, 2014. A full-text check found no occurrence of 'tourism' and no line item 'Space Tourism segment net sales'. The filing reports a 'Space Systems' segment instead; its figures have not been substituted. The requested values for 2014 and 2013 could not be found.\",\n  \"values\": [],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm\"\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.154434,
+   "total_usd": 0.155101,
+   "browser_usd": 0.0006666666666666666,
+   "traffic_usd": null
+  },
+  "steps": 13,
+  "cost_usd": 0.154434,
+  "model_calls": 14,
+  "input_tokens": 287454,
+  "output_tokens": 2252,
+  "browser_minutes": 1.32,
+  "browser_seconds": 79,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 254775
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": true,
+ "video_state": "ready",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:47:19.502182+00:00",
+ "started_at": "2026-11-25T16:47:19.513797+00:00",
+ "finished_at": "2026-11-25T16:48:40.016953+00:00",
+ "files_expire_at": "2026-12-02T16:48:40.016953+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

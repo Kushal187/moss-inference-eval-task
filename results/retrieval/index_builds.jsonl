@@ -1,0 +1,2 @@
+{"index": "finqa-raw", "docs": 21042, "seconds": 470.5787664999998, "result": "<builtins.MutationResult object at 0x10a3943f0>", "info": "<builtins.IndexInfo object at 0x108ada6b0>"}
+{"index": "finqa-ctx", "docs": 21042, "seconds": 134.02615112499961, "result": "<builtins.MutationResult object at 0x10a394a80>", "info": "<builtins.IndexInfo object at 0x108ada870>"}

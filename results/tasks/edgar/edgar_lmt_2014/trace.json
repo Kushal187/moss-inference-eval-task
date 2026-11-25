@@ -1,0 +1,125 @@
+{
+ "final_result": "{\n  \"found\": true,\n  \"notes\": \"Lockheed Martin Corporation's Form 10-K for the fiscal year ended December 31, 2014, Note 2 \u2013 Earnings Per Share, page 69: 'Weighted average common shares outstanding for diluted computations'.\",\n  \"units\": \"in millions\",\n  \"values\": [\n    {\n      \"period\": \"2014\",\n      \"value\": 322.4\n    },\n    {\n      \"period\": \"2013\",\n      \"value\": 326.5\n    }\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm\"\n}",
+ "steps": 9,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795624965.288915,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795624969.1758943,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00003-step-5.png",
+   "step": 5,
+   "captured_at": 1795624974.3515313,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "path": "00004-step-6.png",
+   "step": 6,
+   "captured_at": 1795624979.695931,
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Weighted%2520average%2520common%2520shares%2520outstanding%2520for%2520diluted%2520computations%2522&dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "path": "00005-step-7.png",
+   "step": 7,
+   "captured_at": 1795624985.7173593,
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Weighted%2520average%2520common%2520shares%2520outstanding%2520for%2520diluted%2520computations%2522&dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31&filter_forms=10-K"
+  },
+  {
+   "path": "00006-step-8.png",
+   "step": 8,
+   "captured_at": 1795624992.5660021,
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "path": "00007-step-9.png",
+   "step": 9,
+   "captured_at": 1795624997.574639,
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795624958.3464527,
+   "kind": "text",
+   "text": "I\u2019ll start at SEC EDGAR, locate Lockheed Martin\u2019s fiscal 2014 Form 10-K, and check the requested line item and units for both years. I\u2019ll return the values and filing URL in the requested JSON format, without creating files.",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795624958.5350688,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795624965.3195395,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 4,
+   "at": 1795624969.1935232,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 5,
+   "at": 1795624974.368971,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "step": 6,
+   "at": 1795624979.7133076,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Weighted%2520average%2520common%2520shares%2520outstanding%2520for%2520diluted%2520computations%2522&dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "step": 7,
+   "at": 1795624985.7347214,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Weighted%2520average%2520common%2520shares%2520outstanding%2520for%2520diluted%2520computations%2522&dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31&filter_forms=10-K"
+  },
+  {
+   "step": 8,
+   "at": 1795624992.5829535,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "step": 9,
+   "at": 1795624997.5918813,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "step": 10,
+   "at": 1795625004.9659827,
+   "kind": "text",
+   "text": "{\n  \"found\": true,\n  \"notes\": \"Lockheed Martin Corporation's Form 10-K for the fiscal year ended December 31, 2014, Note 2 \u2013 Earnings Per Share, page 69: 'Weighted average common shares outstanding for diluted computations'.\",\n  \"units\": \"in millions\",\n  \"values\": [\n    {\n      \"period\": \"2014\",\n      \"value\": 322.4\n    },\n    {\n      \"period\": \"2013\",\n      \"value\": 326.5\n    }\n  ],\n  \"filing_url",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 1833508,
+  "started_at": "2026-11-25T16:42:31.136000+00:00"
+ }
+}

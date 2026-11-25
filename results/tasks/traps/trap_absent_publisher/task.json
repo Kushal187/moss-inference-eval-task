@@ -1,0 +1,84 @@
+{
+ "id": "task_1847d66cf2ad461688285c9986ca7562",
+ "object": "task",
+ "status": "completed",
+ "title": "Identify Book Publisher",
+ "goal": "According to THIS product page only, who is the publisher of this book? If the page does not state a publisher, set found=false. Do not use outside knowledge.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "answer"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the page does not show the requested information"
+   },
+   "answer": {
+    "type": "string"
+   },
+   "evidence": {
+    "type": "string",
+    "description": "where on the page you saw it"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.25,
+  "max_runtime_seconds": 420
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "trap_absent_publisher"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": false,
+   "answer": "The product page does not state a publisher.",
+   "evidence": "At https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html, neither the Product Description nor the Product Information table identifies a publisher. The table lists UPC, product type, prices, tax, availability, and number of reviews only."
+  },
+  "output_text": "{\"found\":false,\"answer\":\"The product page does not state a publisher.\",\"evidence\":\"At https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html, neither the Product Description nor the Product Information table identifies a publisher. The table lists UPC, product type, prices, tax, availability, and number of reviews only.\"}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.060425,
+   "total_usd": 0.060758,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 3,
+  "cost_usd": 0.060425,
+  "model_calls": 4,
+  "input_tokens": 34954,
+  "output_tokens": 377,
+  "browser_minutes": 0.27,
+  "browser_seconds": 16,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 16395
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": true,
+ "video_state": "ready",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:45:08.180081+00:00",
+ "started_at": "2026-11-25T16:45:08.193998+00:00",
+ "finished_at": "2026-11-25T16:45:24.778166+00:00",
+ "files_expire_at": "2026-12-02T16:45:24.778166+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

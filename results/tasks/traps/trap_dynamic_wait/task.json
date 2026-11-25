@@ -1,0 +1,84 @@
+{
+ "id": "task_1c27b105b60f4c129d2ff870fa2bd0ec",
+ "object": "task",
+ "status": "completed",
+ "title": "Click Start and report text",
+ "goal": "Click the Start button on this page, wait for the loading to finish, and report the exact text that appears.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://the-internet.herokuapp.com/dynamic_loading/1"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "answer"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the page does not show the requested information"
+   },
+   "answer": {
+    "type": "string"
+   },
+   "evidence": {
+    "type": "string",
+    "description": "where on the page you saw it"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.25,
+  "max_runtime_seconds": 420
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "trap_dynamic_wait"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": true,
+   "answer": "Hello World!",
+   "evidence": "After clicking Start and waiting for loading to finish, \u201cHello World!\u201d appeared below the Example 1 heading at https://the-internet.herokuapp.com/dynamic_loading/1."
+  },
+  "output_text": "{\"found\":true,\"answer\":\"Hello World!\",\"evidence\":\"After clicking Start and waiting for loading to finish, \u201cHello World!\u201d appeared below the Example 1 heading at https://the-internet.herokuapp.com/dynamic_loading/1.\"}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.0539,
+   "total_usd": 0.054233,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 3,
+  "cost_usd": 0.0539,
+  "model_calls": 4,
+  "input_tokens": 32352,
+  "output_tokens": 489,
+  "browser_minutes": 0.36,
+  "browser_seconds": 21,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 16420
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:44:45.595420+00:00",
+ "started_at": "2026-11-25T16:44:45.613655+00:00",
+ "finished_at": "2026-11-25T16:45:07.622862+00:00",
+ "files_expire_at": "2026-12-02T16:45:07.622862+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

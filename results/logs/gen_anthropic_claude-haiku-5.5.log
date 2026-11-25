@@ -1,0 +1,28 @@
+anthropic/claude-haiku-5.5: 600 calls to make (0 already done) -> /Users/kushalpendekanti/Documents/Coding-Fun/moss-task/results/generation/anthropic__claude-haiku-5.5.jsonl
+  1/600 status=400 ttft=Nonems err=unsupported_parameter
+  8/600 status=400 ttft=Nonems err=unsupported_parameter
+  25/600 status=200 ttft=764ms err=None
+  50/600 status=200 ttft=407ms err=None
+  75/600 status=200 ttft=342ms err=None
+  100/600 status=200 ttft=391ms err=None
+  125/600 status=200 ttft=396ms err=None
+  150/600 status=200 ttft=385ms err=None
+  175/600 status=200 ttft=467ms err=None
+  200/600 status=200 ttft=1032ms err=None
+  225/600 status=200 ttft=318ms err=None
+  250/600 status=200 ttft=443ms err=None
+  275/600 status=200 ttft=396ms err=None
+  300/600 status=200 ttft=430ms err=None
+  325/600 status=200 ttft=1208ms err=None
+  350/600 status=200 ttft=427ms err=None
+  375/600 status=200 ttft=644ms err=None
+  400/600 status=200 ttft=586ms err=None
+  425/600 status=200 ttft=433ms err=None
+  450/600 status=200 ttft=489ms err=None
+  475/600 status=200 ttft=589ms err=None
+  500/600 status=200 ttft=357ms err=None
+  525/600 status=200 ttft=475ms err=None
+  550/600 status=200 ttft=445ms err=None
+  575/600 status=200 ttft=414ms err=None
+  600/600 status=200 ttft=391ms err=None
+parameters refused by anthropic/claude-haiku-5.5 and dropped: ['temperature', 'text']

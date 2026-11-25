@@ -1,0 +1,5 @@
+{"probe": "33_existing_indexes", "status": 200, "error": null}
+{"probe": "body_4_6mb", "status": 0, "error": "ReadError('')"}
+{"probe": "empty_input", "status": 200, "text": "I am here to help you with a variety of tasks, such as answering questions, solving problems, or providing information. How can I assist you today?", "usage": {"total_tokens": 119, "input_tokens": 87, "input_tokens_details": {"cached_tokens": 0}, "output_tokens": 32, "output_tokens_details": {"reasoning_tokens": 0}}}
+{"probe": "temperature1_cache_default", "outputs": [["plumed", 102, 228], ["plumed", 0, 65], ["plumed", 0, 71], ["plumed", 0, 81]]}
+{"probe": "temperature1_cache_off", "outputs": [["fright", 102, 241], ["fizzed", 102, 211], ["crisp", 102, 313], ["quartz", 102, 217]]}

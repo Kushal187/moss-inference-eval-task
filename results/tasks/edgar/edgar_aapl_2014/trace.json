@@ -1,0 +1,177 @@
+{
+ "final_result": "{\n  \"found\": true,\n  \"notes\": \"Apple Inc.'s fiscal 2014 Form 10-K, Consolidated Balance Sheets, page 47: 'Property, plant and equipment, net' is printed as 20,624 for September 27, 2014 and 16,597 for September 28, 2013.\",\n  \"units\": \"In millions, except number of shares which are reflected in thousands and par value\",\n  \"values\": [\n    {\n      \"period\": \"fiscal 2014\",\n      \"value\": 20624\n    },\n    {\n      \"period\": \"fiscal 2013\",\n      \"value\": 16597\n    }\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000119312514383437/d783162d10k.htm\"\n}",
+ "steps": 13,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795624860.1808164,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795624865.679023,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00003-step-5.png",
+   "step": 5,
+   "captured_at": 1795624869.565462,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00004-step-6.png",
+   "step": 6,
+   "captured_at": 1795624875.2499676,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00005-step-7.png",
+   "step": 7,
+   "captured_at": 1795624878.0150018,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00006-step-8.png",
+   "step": 8,
+   "captured_at": 1795624881.2652502,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00007-step-10.png",
+   "step": 10,
+   "captured_at": 1795624889.5773132,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=AAPL&startdt=2014-01-01&enddt=2014-12-31"
+  },
+  {
+   "path": "00008-step-11.png",
+   "step": 11,
+   "captured_at": 1795624896.0947587,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=AAPL&startdt=2014-01-01&enddt=2014-12-31&filter_forms=10-K"
+  },
+  {
+   "path": "00009-step-12.png",
+   "step": 12,
+   "captured_at": 1795624901.902191,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=AAPL&startdt=2014-01-01&enddt=2014-12-31&filter_forms=10-K"
+  },
+  {
+   "path": "00010-step-13.png",
+   "step": 13,
+   "captured_at": 1795624907.6620352,
+   "url": "https://www.sec.gov/Archives/edgar/data/320193/000119312514383437/d783162d10k.htm"
+  },
+  {
+   "path": "00011-step-14.png",
+   "step": 14,
+   "captured_at": 1795624912.0636504,
+   "url": "https://www.sec.gov/Archives/edgar/data/320193/000119312514383437/d783162d10k.htm"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795624853.0231984,
+   "kind": "text",
+   "text": "I\u2019ll start at SEC EDGAR, locate Apple\u2019s fiscal 2014 Form 10-K, and check the line item, year headings, and units before returning the JSON.\n",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795624853.218286,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795624860.2038882,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 4,
+   "at": 1795624865.7021966,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 5,
+   "at": 1795624869.5885334,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 6,
+   "at": 1795624875.2731488,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 7,
+   "at": 1795624878.038299,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 8,
+   "at": 1795624881.2882526,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 10,
+   "at": 1795624889.6007624,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=AAPL&startdt=2014-01-01&enddt=2014-12-31"
+  },
+  {
+   "step": 11,
+   "at": 1795624896.117804,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=AAPL&startdt=2014-01-01&enddt=2014-12-31&filter_forms=10-K"
+  },
+  {
+   "step": 12,
+   "at": 1795624901.9250834,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=AAPL&startdt=2014-01-01&enddt=2014-12-31&filter_forms=10-K"
+  },
+  {
+   "step": 13,
+   "at": 1795624907.6853426,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/320193/000119312514383437/d783162d10k.htm"
+  },
+  {
+   "step": 14,
+   "at": 1795624912.086588,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/320193/000119312514383437/d783162d10k.htm"
+  },
+  {
+   "step": 15,
+   "at": 1795624921.3777525,
+   "kind": "text",
+   "text": "{\n  \"found\": true,\n  \"notes\": \"Apple Inc.'s fiscal 2014 Form 10-K, Consolidated Balance Sheets, page 47: 'Property, plant and equipment, net' is printed as 20,624 for September 27, 2014 and 16,597 for September 28, 2013.\",\n  \"units\": \"In millions, except number of shares which are reflected in thousands and par value\",\n  \"values\": [\n    {\n      \"period\": \"fiscal 2014\",\n      \"value\": 20624\n    },\n",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 1237653,
+  "started_at": "2026-11-25T16:40:47.037000+00:00"
+ }
+}

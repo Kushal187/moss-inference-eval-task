@@ -1,0 +1,121 @@
+{
+ "id": "task_8753f6225ebf4ead84ce837247a78e31",
+ "object": "task",
+ "status": "completed",
+ "title": "Extract Merck 10-K tax benefits",
+ "goal": "Using SEC EDGAR, open Merck & Co., Inc.'s annual report on Form 10-K for fiscal year 2013. In that filing, find the line item \"Unrecognized tax benefits, balance at December 31 (from the reconciliation table)\" and report its value for each of these periods: 2013, 2012 and 2011. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_mrk_2013"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": true,
+   "notes": "Merck & Co., Inc.\u2019s fiscal 2013 Form 10-K, page 123: the unrecognized tax benefits reconciliation row labeled \"Balance December 31\" shows $3,503 for 2013, $4,425 for 2012, and $4,277 for 2011.",
+   "units": "$ in millions except per share amounts",
+   "values": [
+    {
+     "value": 3503,
+     "period": "2013"
+    },
+    {
+     "value": 4425,
+     "period": "2012"
+    },
+    {
+     "value": 4277,
+     "period": "2011"
+    }
+   ],
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/310158/000031015814000009/mrk1231201310k.htm"
+  },
+  "output_text": "{\n  \"found\": true,\n  \"notes\": \"Merck & Co., Inc.\u2019s fiscal 2013 Form 10-K, page 123: the unrecognized tax benefits reconciliation row labeled \\\"Balance December 31\\\" shows $3,503 for 2013, $4,425 for 2012, and $4,277 for 2011.\",\n  \"units\": \"$ in millions except per share amounts\",\n  \"values\": [\n    {\"period\": \"2013\", \"value\": 3503},\n    {\"period\": \"2012\", \"value\": 4425},\n    {\"period\": \"2011\", \"value\": 4277}\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/310158/000031015814000009/mrk1231201310k.htm\"\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.152238,
+   "total_usd": 0.152905,
+   "browser_usd": 0.0006666666666666666,
+   "traffic_usd": null
+  },
+  "steps": 12,
+  "cost_usd": 0.152238,
+  "model_calls": 13,
+  "input_tokens": 277840,
+  "output_tokens": 2195,
+  "browser_minutes": 1.44,
+  "browser_seconds": 87,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 245287
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": true,
+ "video_state": "ready",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:45:48.573820+00:00",
+ "started_at": "2026-11-25T16:45:48.586812+00:00",
+ "finished_at": "2026-11-25T16:47:16.424908+00:00",
+ "files_expire_at": "2026-12-02T16:47:16.424908+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

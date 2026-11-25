@@ -1,0 +1,8 @@
+openai/gpt-6-luna: 150 calls to make (0 already done) -> results/generation/openai__gpt-6-luna__structured_nojson.jsonl
+  25/150 status=200 ttft=1193ms err=None
+  50/150 status=200 ttft=1981ms err=None
+  75/150 status=200 ttft=1479ms err=None
+  100/150 status=200 ttft=2916ms err=None
+  125/150 status=200 ttft=1433ms err=None
+  150/150 status=200 ttft=2650ms err=None
+parameters refused by openai/gpt-6-luna and dropped: ['text']

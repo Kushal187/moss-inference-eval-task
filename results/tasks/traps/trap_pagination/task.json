@@ -1,0 +1,83 @@
+{
+ "id": "task_59fe2fa3d620473c9e46586096c8aa3e",
+ "object": "task",
+ "status": "completed",
+ "title": "Count Mystery Books on Books",
+ "goal": "On books.toscrape.com, open the 'Mystery' category. Count every book listed in that category (check all pages of the category) and find the most expensive one. Report the count, the title and the price.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://books.toscrape.com/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "count",
+   "most_expensive_title",
+   "most_expensive_price_gbp"
+  ],
+  "properties": {
+   "count": {
+    "type": "integer"
+   },
+   "most_expensive_title": {
+    "type": "string"
+   },
+   "most_expensive_price_gbp": {
+    "type": "number"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.25,
+  "max_runtime_seconds": 420
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "trap_pagination"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "count": 32,
+   "most_expensive_title": "Boar Island (Anna Pigeon #19)",
+   "most_expensive_price_gbp": 59.48
+  },
+  "output_text": "{\"count\":32,\"most_expensive_title\":\"Boar Island (Anna Pigeon #19)\",\"most_expensive_price_gbp\":59.48}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.078753,
+   "total_usd": 0.079086,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 6,
+  "cost_usd": 0.078753,
+  "model_calls": 7,
+  "input_tokens": 89095,
+  "output_tokens": 1163,
+  "browser_minutes": 0.57,
+  "browser_seconds": 34,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 69702
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": true,
+ "video_state": "ready",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:44:07.832689+00:00",
+ "started_at": "2026-11-25T16:44:07.845709+00:00",
+ "finished_at": "2026-11-25T16:44:42.887999+00:00",
+ "files_expire_at": "2026-12-02T16:44:42.887999+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

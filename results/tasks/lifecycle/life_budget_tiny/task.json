@@ -1,0 +1,58 @@
+{
+ "id": "task_af1d376c7bf34ba3aefe847b7404ae9e",
+ "object": "task",
+ "status": "failed",
+ "title": "Count five-star books on books.toscrape.com",
+ "goal": "On books.toscrape.com, go through EVERY page of the full catalogue (all 50 pages) and count how many books have a five-star rating. Report the count.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://books.toscrape.com/"
+ },
+ "output_schema": null,
+ "limits": {
+  "max_cost_usd": 0.01,
+  "max_runtime_seconds": 300
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "life_budget_tiny"
+ },
+ "byok": false,
+ "result": null,
+ "verification": null,
+ "usage": {
+  "cost": {
+   "model_usd": 0.023796,
+   "total_usd": 0.024129,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 1,
+  "cost_usd": 0.023796,
+  "model_calls": 2,
+  "input_tokens": 8154,
+  "output_tokens": 81,
+  "browser_minutes": 0.13,
+  "browser_seconds": 8,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 0
+ },
+ "error": {
+  "code": "budget_exceeded",
+  "message": "Spent $0.02"
+ },
+ "trace_available": true,
+ "video_available": true,
+ "video_state": "ready",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:48:10.745310+00:00",
+ "started_at": "2026-11-25T16:48:10.772703+00:00",
+ "finished_at": "2026-11-25T16:48:18.705173+00:00",
+ "files_expire_at": "2026-12-02T16:48:18.705173+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

@@ -1,0 +1,96 @@
+{
+ "id": "task_18f1bea7497348de825117e4fe86b181",
+ "object": "task",
+ "status": "completed",
+ "title": "Larkspur Fictional Widgets Q2 2026 Net Income",
+ "goal": "What is Larkspur Fictional Widgets' Q2 2026 net income? Give the current, authoritative figure.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://kushal187.github.io/moss-task/tasks/trap_site/restated.html"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "answer": {
+    "type": "string"
+   },
+   "net_income": {
+    "type": [
+     "number",
+     "string",
+     "null"
+    ]
+   },
+   "net_revenue": {
+    "type": [
+     "number",
+     "null"
+    ]
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.2,
+  "max_runtime_seconds": 300
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "restated_below_fold"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": true,
+   "notes": "Source: https://kushal187.github.io/moss-task/tasks/trap_site/restated.html. The October 2026 restated table reports net income of 498 and net revenue of 3,861, in thousands of US dollars; these were multiplied by 1,000 for the values above. The page explicitly states that restated figures supersede the original report, which listed net income of US$530,000 and net revenue of US$3,925,000. The site identifies the company as a fictional test fixture.",
+   "answer": "Larkspur Fictional Widgets' current authoritative Q2 2026 net income is US$498,000, as restated in October 2026.",
+   "net_income": 498000,
+   "net_revenue": 3861000
+  },
+  "output_text": "{\"found\":true,\"answer\":\"Larkspur Fictional Widgets' current authoritative Q2 2026 net income is US$498,000, as restated in October 2026.\",\"net_income\":498000,\"net_revenue\":3861000,\"notes\":\"Source: https://kushal187.github.io/moss-task/tasks/trap_site/restated.html. The October 2026 restated table reports net income of 498 and net revenue of 3,861, in thousands of US dollars; these were multiplied by 1,000 for the values above. The page explicitly states that restated figures supersede the original report, which listed net income of US$530,000 and net revenue of US$3,925,000. The site identifies the company as a fictional test fixture.\"}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.059638,
+   "total_usd": 0.059971,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 4,
+  "cost_usd": 0.059638,
+  "model_calls": 5,
+  "input_tokens": 44387,
+  "output_tokens": 642,
+  "browser_minutes": 0.33,
+  "browser_seconds": 20,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 27601
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:48:14.637704+00:00",
+ "started_at": "2026-11-25T16:48:14.650677+00:00",
+ "finished_at": "2026-11-25T16:48:34.818570+00:00",
+ "files_expire_at": "2026-12-02T16:48:34.818570+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

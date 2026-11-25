@@ -1,0 +1,106 @@
+{
+ "id": "task_79fe23e89ae846448aeaee959f632e6c",
+ "object": "task",
+ "status": "completed",
+ "title": "Extract Apple 10-K Net Sales",
+ "goal": "Using SEC EDGAR, open Apple Inc.'s annual report on Form 10-K for fiscal year 2031. In that filing, find the line item \"Total net sales\" and report its value for each of these periods: fiscal 2031 and fiscal 2030. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_neg_future"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": false,
+   "notes": "Apple Inc.'s fiscal 2031 Form 10-K could not be found. The SEC EDGAR annual-report search showed the latest reporting period as September 26, 2026, filed November 3, 2026. Fiscal 2031 is in the future as of November 25, 2026, so the requested fiscal 2031 and fiscal 2030 values could not be obtained from that filing. No values were guessed. Sources checked: https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K and https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude",
+   "values": []
+  },
+  "output_text": "{\n  \"found\": false,\n  \"notes\": \"Apple Inc.'s fiscal 2031 Form 10-K could not be found. The SEC EDGAR annual-report search showed the latest reporting period as September 26, 2026, filed November 3, 2026. Fiscal 2031 is in the future as of November 25, 2026, so the requested fiscal 2031 and fiscal 2030 values could not be obtained from that filing. No values were guessed. Sources checked: https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K and https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude\",\n  \"values\": []\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.152826,
+   "total_usd": 0.153493,
+   "browser_usd": 0.0006666666666666666,
+   "traffic_usd": null
+  },
+  "steps": 11,
+  "cost_usd": 0.152826,
+  "model_calls": 12,
+  "input_tokens": 267601,
+  "output_tokens": 2025,
+  "browser_minutes": 1.59,
+  "browser_seconds": 95,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 233709
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": true,
+ "video_state": "ready",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:47:53.271304+00:00",
+ "started_at": "2026-11-25T16:47:53.293216+00:00",
+ "finished_at": "2026-11-25T16:49:30.101083+00:00",
+ "files_expire_at": "2026-12-02T16:49:30.101083+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

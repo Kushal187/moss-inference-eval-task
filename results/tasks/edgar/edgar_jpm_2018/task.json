@@ -1,0 +1,117 @@
+{
+ "id": "task_bc58669d2f2e430bb6f5fd0a7b684ae9",
+ "object": "task",
+ "status": "completed",
+ "title": "JPMorgan 10-K Net Interest Yield",
+ "goal": "Using SEC EDGAR, open JPMorgan Chase & Co.'s annual report on Form 10-K for fiscal year 2018. In that filing, find the line item \"Net interest yield on average interest-earning assets, managed basis\" and report its value for each of these periods: 2018 and 2017. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_jpm_2018"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": true,
+   "notes": "Page 58 of JPMorgan Chase & Co.'s 2018 Form 10-K reports 'Net interest yield on average interest-earning assets \u2013 managed basis' as 2.50% for 2018 and 2.36% for 2017.",
+   "units": "%",
+   "values": [
+    {
+     "value": 2.5,
+     "period": "2018"
+    },
+    {
+     "value": 2.36,
+     "period": "2017"
+    }
+   ],
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  },
+  "output_text": "{\n  \"found\": true,\n  \"notes\": \"Page 58 of JPMorgan Chase & Co.'s 2018 Form 10-K reports 'Net interest yield on average interest-earning assets \u2013 managed basis' as 2.50% for 2018 and 2.36% for 2017.\",\n  \"units\": \"%\",\n  \"values\": [\n    {\"period\": \"2018\", \"value\": 2.50},\n    {\"period\": \"2017\", \"value\": 2.36}\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm\"\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.13792,
+   "total_usd": 0.138587,
+   "browser_usd": 0.0006666666666666666,
+   "traffic_usd": null
+  },
+  "steps": 11,
+  "cost_usd": 0.13792,
+  "model_calls": 12,
+  "input_tokens": 233483,
+  "output_tokens": 1967,
+  "browser_minutes": 1.05,
+  "browser_seconds": 63,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 203103
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:46:47.424766+00:00",
+ "started_at": "2026-11-25T16:46:47.437257+00:00",
+ "finished_at": "2026-11-25T16:47:51.446548+00:00",
+ "files_expire_at": "2026-12-02T16:47:51.446548+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

@@ -1,0 +1,12 @@
+5 tasks from lifecycle
+[life_runtime_min] created task_dbf1742856904563aaed8360a40401b1 (queued)
+[life_budget_tiny] created task_af1d376c7bf34ba3aefe847b7404ae9e (queued)
+[life_budget_tiny] failed in 9s cost=0.024129 verif=None score=None
+[life_cancel_running] created task_c9f6e9152fbc4cacb22c19f6d76a124e (queued)
+[life_cancel_running] cancel requested -> running cancel_requested=True
+[life_cancel_running] cancelled in 38s cost=0.103349 verif=None score=None
+[life_schema_impossible] created task_f3aaeeef2afa477f959b62841f74b110 (queued)
+[life_runtime_min] completed in 62s cost=0.112425 verif=None score=None
+[life_no_schema] created task_115873616ced4a1184066c869c635349 (queued)
+[life_no_schema] completed in 15s cost=0.050815 verif=None score=None
+[life_schema_impossible] completed in 46s cost=0.057277 verif=True score=None

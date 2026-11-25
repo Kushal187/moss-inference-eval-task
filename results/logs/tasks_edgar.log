@@ -1,0 +1,19 @@
+9 tasks from edgar
+[edgar_lmt_2014] created task_01c473fb215645c89b70aac2c514027b (queued)
+[edgar_c_2008] created task_cc4700571c3b4b41a6dabbacccd72674 (queued)
+[edgar_lmt_2014] completed in 59s cost=0.122574 verif=True score=True
+[edgar_gs_2017] created task_c001fe5bec9b4e1aa3574446915fef14 (queued)
+[edgar_c_2008] completed in 99s cost=0.210278 verif=True score=False
+[edgar_pm_2015] created task_2378cc9e6bda401a8ee068e75bd0d0b9 (queued)
+[edgar_gs_2017] completed in 135s cost=0.218473 verif=True score=True
+[edgar_mrk_2013] created task_8753f6225ebf4ead84ce837247a78e31 (queued)
+[edgar_pm_2015] completed in 98s cost=0.181528 verif=True score=False
+[edgar_cme_2010] created task_a1d5b00664d14d34aad6883ccf8d5e10 (queued)
+[edgar_cme_2010] completed in 55s cost=0.143254 verif=True score=True
+[edgar_jpm_2018] created task_bc58669d2f2e430bb6f5fd0a7b684ae9 (queued)
+[edgar_mrk_2013] completed in 89s cost=0.152905 verif=True score=True
+[edgar_neg_lineitem] created task_ce583b34495742858a18987ce1a0067c (queued)
+[edgar_jpm_2018] completed in 64s cost=0.138587 verif=True score=True
+[edgar_neg_future] created task_79fe23e89ae846448aeaee959f632e6c (queued)
+[edgar_neg_lineitem] completed in 83s cost=0.155101 verif=True score=True
+[edgar_neg_future] completed in 98s cost=0.153493 verif=True score=True

@@ -1,0 +1,147 @@
+{
+ "final_result": "{\n  \"found\": true,\n  \"notes\": \"Page 58 of JPMorgan Chase & Co.'s 2018 Form 10-K reports 'Net interest yield on average interest-earning assets \u2013 managed basis' as 2.50% for 2018 and 2.36% for 2017.\",\n  \"units\": \"%\",\n  \"values\": [\n    {\"period\": \"2018\", \"value\": 2.50},\n    {\"period\": \"2017\", \"value\": 2.36}\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm\"\n}",
+ "steps": 11,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795625220.8279982,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795625226.114051,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00003-step-5.png",
+   "step": 5,
+   "captured_at": 1795625230.2313492,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00004-step-6.png",
+   "step": 6,
+   "captured_at": 1795625236.1054914,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=JPMorgan%2520Chase&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "path": "00005-step-8.png",
+   "step": 8,
+   "captured_at": 1795625242.579396,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=JPMorgan%2520Chase&startdt=2019-01-01&enddt=2019-12-31"
+  },
+  {
+   "path": "00006-step-9.png",
+   "step": 9,
+   "captured_at": 1795625247.338604,
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Net%2520interest%2520yield%2520on%2520average%2520interest-earning%2520assets%2522&dateRange=custom&entityName=JPMorgan%2520Chase&startdt=2019-01-01&enddt=2019-12-31"
+  },
+  {
+   "path": "00007-step-10.png",
+   "step": 10,
+   "captured_at": 1795625254.5234637,
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  },
+  {
+   "path": "00008-step-11.png",
+   "step": 11,
+   "captured_at": 1795625257.1894298,
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  },
+  {
+   "path": "00009-step-13.png",
+   "step": 13,
+   "captured_at": 1795625263.0710948,
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795625213.431394,
+   "kind": "text",
+   "text": "I\u2019ll start at SEC EDGAR, locate JPMorgan Chase & Co.\u2019s 2018 Form 10-K, and check the requested line item for both years. I\u2019ll return the values as printed, with the filing URL, and won\u2019t create any files.",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795625213.6008778,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795625220.8498306,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 4,
+   "at": 1795625226.1366444,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 5,
+   "at": 1795625230.2530363,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 6,
+   "at": 1795625236.127431,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=JPMorgan%2520Chase&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "step": 8,
+   "at": 1795625242.6016145,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=JPMorgan%2520Chase&startdt=2019-01-01&enddt=2019-12-31"
+  },
+  {
+   "step": 9,
+   "at": 1795625247.3634882,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Net%2520interest%2520yield%2520on%2520average%2520interest-earning%2520assets%2522&dateRange=custom&entityName=JPMorgan%2520Chase&startdt=2019-01-01&enddt=2019-12-31"
+  },
+  {
+   "step": 10,
+   "at": 1795625254.5450153,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  },
+  {
+   "step": 11,
+   "at": 1795625257.2114418,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  },
+  {
+   "step": 13,
+   "at": 1795625263.0931044,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10k2018.htm"
+  },
+  {
+   "step": 14,
+   "at": 1795625270.111441,
+   "kind": "text",
+   "text": "{\n  \"found\": true,\n  \"notes\": \"Page 58 of JPMorgan Chase & Co.'s 2018 Form 10-K reports 'Net interest yield on average interest-earning assets \u2013 managed basis' as 2.50% for 2018 and 2.36% for 2017.\",\n  \"units\": \"%\",\n  \"values\": [\n    {\"period\": \"2018\", \"value\": 2.50},\n    {\"period\": \"2017\", \"value\": 2.36}\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/19617/000001961719000054/corp10",
+   "url": null
+  }
+ ],
+ "video": null
+}

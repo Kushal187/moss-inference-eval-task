@@ -1,0 +1,151 @@
+{
+ "final_result": "{\n  \"found\": false,\n  \"notes\": \"Apple Inc.'s fiscal 2031 Form 10-K could not be found. The SEC EDGAR annual-report search showed the latest reporting period as September 26, 2026, filed November 3, 2026. Fiscal 2031 is in the future as of November 25, 2026, so the requested fiscal 2031 and fiscal 2030 values could not be obtained from that filing. No values were guessed. Sources checked: https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K and https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude\",\n  \"values\": []\n}",
+ "steps": 11,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795625288.099029,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-5.png",
+   "step": 5,
+   "captured_at": 1795625293.8602035,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00003-step-6.png",
+   "step": 6,
+   "captured_at": 1795625300.19335,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00004-step-7.png",
+   "step": 7,
+   "captured_at": 1795625306.9273252,
+   "url": "https://www.sec.gov/edgar/search/#/entityName=AAPL"
+  },
+  {
+   "path": "00005-step-9.png",
+   "step": 9,
+   "captured_at": 1795625323.5428796,
+   "url": "https://www.sec.gov/edgar/search/#/q=2031&entityName=AAPL"
+  },
+  {
+   "path": "00006-step-11.png",
+   "step": 11,
+   "captured_at": 1795625336.3912008,
+   "url": "https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K"
+  },
+  {
+   "path": "00007-step-13.png",
+   "step": 13,
+   "captured_at": 1795625350.1841385,
+   "url": "https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude"
+  },
+  {
+   "path": "00008-step-14.png",
+   "step": 14,
+   "captured_at": 1795625354.766212,
+   "url": "https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude"
+  },
+  {
+   "path": "00009-step-16.png",
+   "step": 16,
+   "captured_at": 1795625361.0559022,
+   "url": "https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795625280.158908,
+   "kind": "text",
+   "text": "I\u2019ll search SEC EDGAR for Apple\u2019s fiscal 2031 Form 10-K and check for the requested line item if the filing is available. I\u2019ll return `found=false` without guessing if it cannot be found.\n",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795625280.3547697,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795625288.119989,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 5,
+   "at": 1795625293.881258,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 6,
+   "at": 1795625300.214315,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 7,
+   "at": 1795625306.9481292,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/entityName=AAPL"
+  },
+  {
+   "step": 9,
+   "at": 1795625323.5636663,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/q=2031&entityName=AAPL"
+  },
+  {
+   "step": 11,
+   "at": 1795625336.4124794,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K"
+  },
+  {
+   "step": 13,
+   "at": 1795625350.2049468,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude"
+  },
+  {
+   "step": 14,
+   "at": 1795625354.786988,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude"
+  },
+  {
+   "step": 16,
+   "at": 1795625361.0769868,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/entityName=AAPL&filter_forms=10-K"
+  },
+  {
+   "step": 17,
+   "at": 1795625368.6756327,
+   "kind": "text",
+   "text": "{\n  \"found\": false,\n  \"notes\": \"Apple Inc.'s fiscal 2031 Form 10-K could not be found. The SEC EDGAR annual-report search showed the latest reporting period as September 26, 2026, filed November 3, 2026. Fiscal 2031 is in the future as of November 25, 2026, so the requested fiscal 2031 and fiscal 2030 values could not be obtained from that filing. No values were guessed. Sources checked: https://w",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 2085693,
+  "started_at": "2026-11-25T16:47:53.461000+00:00"
+ }
+}

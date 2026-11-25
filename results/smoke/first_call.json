@@ -1,0 +1,71 @@
+{
+ "status": 200,
+ "ms": 324.68566600005033,
+ "headers": {
+  "x-moss-box": "g904212",
+  "x-moss-request-id": "6c4ccdc4bb194533995c240a15e1959e",
+  "x-moss-retrieve-ms": "0.0",
+  "x-ratelimit-limit-requests": "120",
+  "x-ratelimit-limit-tokens": "600000",
+  "x-ratelimit-remaining-requests": "9",
+  "x-ratelimit-remaining-tokens": "599896",
+  "x-ratelimit-reset-requests": "1s",
+  "x-ratelimit-reset-tokens": "1s"
+ },
+ "body": {
+  "id": "resp_6c4ccdc4bb194533995c240a15e1959e",
+  "object": "response",
+  "created_at": 1795624092,
+  "status": "completed",
+  "error": null,
+  "incomplete_details": null,
+  "model": "moss/fastlane-1",
+  "instructions": null,
+  "max_output_tokens": null,
+  "metadata": {},
+  "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+   "effort": null,
+   "summary": null
+  },
+  "store": false,
+  "temperature": null,
+  "text": {
+   "format": {
+    "type": "text"
+   }
+  },
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": null,
+  "truncation": "disabled",
+  "user": null,
+  "output": [
+   {
+    "id": "msg_6c4ccdc4bb194533995c240a15e1959e_0",
+    "type": "message",
+    "status": "completed",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "output_text",
+      "text": "pong",
+      "annotations": []
+     }
+    ]
+   }
+  ],
+  "usage": {
+   "total_tokens": 96,
+   "input_tokens": 94,
+   "input_tokens_details": {
+    "cached_tokens": 0
+   },
+   "output_tokens": 2,
+   "output_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "id": "task_2378cc9e6bda401a8ee068e75bd0d0b9",
+ "object": "task",
+ "status": "completed",
+ "title": "Extract Philip Morris 10-K Currency Translation",
+ "goal": "Using SEC EDGAR, open Philip Morris International Inc.'s annual report on Form 10-K for fiscal year 2015. In that filing, find the line item \"Currency translation adjustments (in the statement of comprehensive earnings)\" and report its value for each of these periods: 2015, 2014 and 2013. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_pm_2015"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": false,
+   "notes": "The fiscal 2015 Form 10-K was found, but the requested line item has no single printed value. On page 84, the Consolidated Statements of Comprehensive Earnings show 'Change in currency translation adjustments:' as a heading with blank value cells. Its component rows are 'Unrealized gains (losses)' (2015: -2248; 2014: -1746; 2013: -1876) and '(Gains)/losses transferred to earnings' (2015: -1; 2014: -5; 2013: -12). No component was selected or total inferred.",
+   "units": "in millions of dollars",
+   "values": [],
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm"
+  },
+  "output_text": "{\n  \"found\": false,\n  \"notes\": \"The fiscal 2015 Form 10-K was found, but the requested line item has no single printed value. On page 84, the Consolidated Statements of Comprehensive Earnings show 'Change in currency translation adjustments:' as a heading with blank value cells. Its component rows are 'Unrealized gains (losses)' (2015: -2248; 2014: -1746; 2013: -1876) and '(Gains)/losses transferred to earnings' (2015: -1; 2014: -5; 2013: -12). No component was selected or total inferred.\",\n  \"units\": \"in millions of dollars\",\n  \"values\": [],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/1413329/000141332916000076/pm123115form10kwrapinclfsm.htm\"\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.180861,
+   "total_usd": 0.181528,
+   "browser_usd": 0.0006666666666666666,
+   "traffic_usd": null
+  },
+  "steps": 16,
+  "cost_usd": 0.180861,
+  "model_calls": 17,
+  "input_tokens": 378797,
+  "output_tokens": 3097,
+  "browser_minutes": 1.58,
+  "browser_seconds": 95,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 344268
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:44:11.301424+00:00",
+ "started_at": "2026-11-25T16:44:11.315646+00:00",
+ "finished_at": "2026-11-25T16:45:47.809428+00:00",
+ "files_expire_at": "2026-12-02T16:45:47.809428+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

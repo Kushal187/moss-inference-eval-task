@@ -1,0 +1,78 @@
+{
+ "id": "task_7c0fb2f74f1a4554bc951f3e4fdc9416",
+ "object": "task",
+ "status": "completed",
+ "title": "Count love tagged quotes",
+ "goal": "This page loads more quotes as you scroll (infinite scroll). Load ALL quotes, then count how many quotes carry the tag 'love'.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://quotes.toscrape.com/scroll"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "total_quotes_loaded",
+   "love_tag_count"
+  ],
+  "properties": {
+   "love_tag_count": {
+    "type": "integer"
+   },
+   "total_quotes_loaded": {
+    "type": "integer"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.25,
+  "max_runtime_seconds": 420
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "trap_infinite_scroll"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "love_tag_count": 14,
+   "total_quotes_loaded": 100
+  },
+  "output_text": "{\"total_quotes_loaded\":100,\"love_tag_count\":14}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.070194,
+   "total_usd": 0.070527,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 5,
+  "cost_usd": 0.070194,
+  "model_calls": 6,
+  "input_tokens": 74356,
+  "output_tokens": 881,
+  "browser_minutes": 0.64,
+  "browser_seconds": 38,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 56153
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:44:36.040526+00:00",
+ "started_at": "2026-11-25T16:44:36.052524+00:00",
+ "finished_at": "2026-11-25T16:45:14.884769+00:00",
+ "files_expire_at": "2026-12-02T16:45:14.884769+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

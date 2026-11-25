@@ -1,0 +1,219 @@
+{
+ "final_result": "{\n  \"found\": true,\n  \"notes\": \"Citigroup Inc.'s 2008 Form 10-K, 'Components of Capital Under Regulatory Guidelines,' row 'Total Capital (Tier 1 and Tier 2),' prints $156,398 for 2008 and $134,121 for 2007. The 2007 column is footnoted 'Reclassified to conform to the current period\u2019s presentation.'\",\n  \"units\": \"In millions of dollars at year end\",\n  \"values\": [\n    {\n      \"period\": \"year-end 2008\",\n      \"value\": 156398\n    },\n    {\n      \"period\": \"year-end 2007\",\n      \"value\": 134121\n    }\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm\"\n}",
+ "steps": 16,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795624964.1104238,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795624969.6942477,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00003-step-5.png",
+   "step": 5,
+   "captured_at": 1795624972.6924937,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00004-step-6.png",
+   "step": 6,
+   "captured_at": 1795624977.099023,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00005-step-7.png",
+   "step": 7,
+   "captured_at": 1795624983.746711,
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Total%2520Capital%2522&dateRange=custom&entityName=Citigroup&startdt=2009-01-01&enddt=2009-12-31"
+  },
+  {
+   "path": "00006-step-9.png",
+   "step": 9,
+   "captured_at": 1795624989.3765953,
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Total%2520Capital%2522&dateRange=custom&entityName=Citigroup&startdt=2009-01-01&enddt=2009-12-31"
+  },
+  {
+   "path": "00007-step-11.png",
+   "step": 11,
+   "captured_at": 1795624995.2883525,
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=Citigroup&owner=exclude&count=40"
+  },
+  {
+   "path": "00008-step-12.png",
+   "step": 12,
+   "captured_at": 1795625000.863747,
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=Citigroup%20Inc&owner=exclude&count=40"
+  },
+  {
+   "path": "00009-step-14.png",
+   "step": 14,
+   "captured_at": 1795625009.9078374,
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=C&type=10-K&dateb=20090331&owner=exclude&count=40"
+  },
+  {
+   "path": "00010-step-15.png",
+   "step": 15,
+   "captured_at": 1795625015.7714372,
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/0001193125-09-041237-index.htm"
+  },
+  {
+   "path": "00011-step-16.png",
+   "step": 16,
+   "captured_at": 1795625023.024304,
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "path": "00012-step-18.png",
+   "step": 18,
+   "captured_at": 1795625026.6914272,
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "path": "00013-step-20.png",
+   "step": 20,
+   "captured_at": 1795625030.5255575,
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "path": "00014-step-23.png",
+   "step": 23,
+   "captured_at": 1795625037.5631175,
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795624957.4268987,
+   "kind": "text",
+   "text": "I\u2019ll start at SEC EDGAR, locate Citigroup\u2019s 2008 Form 10-K, and check the exact capital row, year columns, and units before returning the JSON.\n",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795624957.6256635,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795624964.133136,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 4,
+   "at": 1795624969.7166975,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 5,
+   "at": 1795624972.7146895,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 6,
+   "at": 1795624977.1211588,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 7,
+   "at": 1795624983.7686765,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Total%2520Capital%2522&dateRange=custom&entityName=Citigroup&startdt=2009-01-01&enddt=2009-12-31"
+  },
+  {
+   "step": 9,
+   "at": 1795624989.398485,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/q=%2522Total%2520Capital%2522&dateRange=custom&entityName=Citigroup&startdt=2009-01-01&enddt=2009-12-31"
+  },
+  {
+   "step": 11,
+   "at": 1795624995.3106086,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=Citigroup&owner=exclude&count=40"
+  },
+  {
+   "step": 12,
+   "at": 1795625000.8853316,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=Citigroup%20Inc&owner=exclude&count=40"
+  },
+  {
+   "step": 14,
+   "at": 1795625009.9297628,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=C&type=10-K&dateb=20090331&owner=exclude&count=40"
+  },
+  {
+   "step": 15,
+   "at": 1795625015.7941136,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/0001193125-09-041237-index.htm"
+  },
+  {
+   "step": 16,
+   "at": 1795625023.046006,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "step": 18,
+   "at": 1795625026.713656,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "step": 20,
+   "at": 1795625030.5470748,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "step": 22,
+   "at": 1795625033.5054266,
+   "kind": "text",
+   "text": "The filing\u2019s capital table shows $156,398 for 2008 and $134,121 for 2007, in millions of dollars. The same label also appears in a ratio table; I\u2019m using Citigroup\u2019s dollar amounts, not the ratios or Citibank subsidiary figures.\n",
+   "url": null
+  },
+  {
+   "step": 23,
+   "at": 1795625037.584837,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  {
+   "step": 24,
+   "at": 1795625046.990474,
+   "kind": "text",
+   "text": "{\n  \"found\": true,\n  \"notes\": \"Citigroup Inc.'s 2008 Form 10-K, 'Components of Capital Under Regulatory Guidelines,' row 'Total Capital (Tier 1 and Tier 2),' prints $156,398 for 2008 and $134,121 for 2007. The 2007 column is footnoted 'Reclassified to conform to the current period\u2019s presentation.'\",\n  \"units\": \"In millions of dollars at year end\",\n  \"values\": [\n    {\n      \"period\": \"year-end 2008",
+   "url": null
+  }
+ ],
+ "video": null
+}

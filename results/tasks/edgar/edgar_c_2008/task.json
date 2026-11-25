@@ -1,0 +1,117 @@
+{
+ "id": "task_cc4700571c3b4b41a6dabbacccd72674",
+ "object": "task",
+ "status": "completed",
+ "title": "Citigroup 2008 10-K Total Capital",
+ "goal": "Using SEC EDGAR, open Citigroup Inc.'s annual report on Form 10-K for fiscal year 2008. In that filing, find the line item \"Total Capital (Tier 1 and Tier 2)\" and report its value for each of these periods: year-end 2008 and year-end 2007. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://www.sec.gov/edgar/search/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "found",
+   "values"
+  ],
+  "properties": {
+   "found": {
+    "type": "boolean",
+    "description": "false if the filing or the line item could not be found"
+   },
+   "notes": {
+    "type": "string"
+   },
+   "units": {
+    "type": "string",
+    "description": "units as printed in the filing, e.g. 'in millions'"
+   },
+   "values": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "period",
+      "value"
+     ],
+     "properties": {
+      "value": {
+       "type": "number"
+      },
+      "period": {
+       "type": "string"
+      }
+     }
+    }
+   },
+   "filing_url": {
+    "type": "string",
+    "description": "URL of the 10-K document the values came from"
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.4,
+  "max_runtime_seconds": 600
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "edgar_c_2008"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "found": true,
+   "notes": "Citigroup Inc.'s 2008 Form 10-K, 'Components of Capital Under Regulatory Guidelines,' row 'Total Capital (Tier 1 and Tier 2),' prints $156,398 for 2008 and $134,121 for 2007. The 2007 column is footnoted 'Reclassified to conform to the current period\u2019s presentation.'",
+   "units": "In millions of dollars at year end",
+   "values": [
+    {
+     "value": 156398,
+     "period": "year-end 2008"
+    },
+    {
+     "value": 134121,
+     "period": "year-end 2007"
+    }
+   ],
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm"
+  },
+  "output_text": "{\n  \"found\": true,\n  \"notes\": \"Citigroup Inc.'s 2008 Form 10-K, 'Components of Capital Under Regulatory Guidelines,' row 'Total Capital (Tier 1 and Tier 2),' prints $156,398 for 2008 and $134,121 for 2007. The 2007 column is footnoted 'Reclassified to conform to the current period\u2019s presentation.'\",\n  \"units\": \"In millions of dollars at year end\",\n  \"values\": [\n    {\n      \"period\": \"year-end 2008\",\n      \"value\": 156398\n    },\n    {\n      \"period\": \"year-end 2007\",\n      \"value\": 134121\n    }\n  ],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/831001/000119312509041237/d10k.htm\"\n}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.209611,
+   "total_usd": 0.210278,
+   "browser_usd": 0.0006666666666666666,
+   "traffic_usd": null
+  },
+  "steps": 16,
+  "cost_usd": 0.209611,
+  "model_calls": 17,
+  "input_tokens": 429594,
+  "output_tokens": 2815,
+  "browser_minutes": 1.6,
+  "browser_seconds": 96,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 386023
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:42:31.050363+00:00",
+ "started_at": "2026-11-25T16:42:31.068127+00:00",
+ "finished_at": "2026-11-25T16:44:09.010986+00:00",
+ "files_expire_at": "2026-12-02T16:44:09.010986+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

@@ -42,14 +42,15 @@ async def run_one(client, sem, limiter, model, base, few_shot, drop, out_path):
         messages, needs_json = build_messages(base["strategy"], base["question"], context, few_shot)
         refused = []
         while True:
-            rec = await respond(client, build_body(model, messages, needs_json, drop), limiter=limiter)
+            body = build_body(model, messages, needs_json, drop)
+            rec = await respond(client, body, limiter=limiter)
             err = rec.get("error") or {}
             msg = json.dumps(err).lower()
             # Fall back once per refused parameter, and remember it for the rest of the run.
-            if rec.get("status") == 400 and "temperature" in msg and "temperature" not in drop:
+            # Check what THIS request sent (not the shared set) so concurrent calls retry too.
+            if rec.get("status") == 400 and "temperature" in msg and "temperature" in body:
                 drop.add("temperature"); refused.append("temperature"); continue
-            if rec.get("status") == 400 and ("json" in msg or "text" in msg or "format" in msg) \
-                    and needs_json and "text" not in drop:
+            if rec.get("status") == 400 and ("json" in msg or "text" in msg or "format" in msg) and "text" in body:
                 drop.add("text"); refused.append("text.format=json_object"); continue
             break
         raw = rec.get("text") or ""

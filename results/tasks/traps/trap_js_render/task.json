@@ -1,0 +1,87 @@
+{
+ "id": "task_4c1233193d7246e2801c68f00df82515",
+ "object": "task",
+ "status": "completed",
+ "title": "List Quote Authors",
+ "goal": "This page renders its quotes with JavaScript. List the author of every quote shown on this page, in order.",
+ "environment": {
+  "type": "browser",
+  "start_url": "https://quotes.toscrape.com/js/page/2/"
+ },
+ "output_schema": {
+  "type": "object",
+  "required": [
+   "authors"
+  ],
+  "properties": {
+   "authors": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "limits": {
+  "max_cost_usd": 0.25,
+  "max_runtime_seconds": 420
+ },
+ "model": "moss-balanced",
+ "effort": "medium",
+ "metadata": {
+  "spec_task": "trap_js_render"
+ },
+ "byok": false,
+ "result": {
+  "output": {
+   "authors": [
+    "Marilyn Monroe",
+    "J.K. Rowling",
+    "Albert Einstein",
+    "Bob Marley",
+    "Dr. Seuss",
+    "Douglas Adams",
+    "Elie Wiesel",
+    "Friedrich Nietzsche",
+    "Mark Twain",
+    "Allen Saunders"
+   ]
+  },
+  "output_text": "{\"authors\":[\"Marilyn Monroe\",\"J.K. Rowling\",\"Albert Einstein\",\"Bob Marley\",\"Dr. Seuss\",\"Douglas Adams\",\"Elie Wiesel\",\"Friedrich Nietzsche\",\"Mark Twain\",\"Allen Saunders\"]}"
+ },
+ "verification": {
+  "method": "output_schema",
+  "passed": true
+ },
+ "usage": {
+  "cost": {
+   "model_usd": 0.062351,
+   "total_usd": 0.062684,
+   "browser_usd": 0.0003333333333333333,
+   "traffic_usd": null
+  },
+  "steps": 3,
+  "cost_usd": 0.062351,
+  "model_calls": 4,
+  "input_tokens": 50077,
+  "output_tokens": 420,
+  "browser_minutes": 0.44,
+  "browser_seconds": 26,
+  "browser_traffic_mb": null,
+  "cached_input_tokens": 31670
+ },
+ "error": null,
+ "trace_available": true,
+ "video_available": false,
+ "video_state": "pending",
+ "live_url": null,
+ "cancel_requested": false,
+ "created_at": "2026-11-25T16:44:07.834596+00:00",
+ "started_at": "2026-11-25T16:44:07.859634+00:00",
+ "finished_at": "2026-11-25T16:44:34.540163+00:00",
+ "files_expire_at": "2026-12-02T16:44:34.540163+00:00",
+ "zero_data_retention": false,
+ "content_expires_at": null,
+ "content_deleted_at": null,
+ "webhook": null
+}

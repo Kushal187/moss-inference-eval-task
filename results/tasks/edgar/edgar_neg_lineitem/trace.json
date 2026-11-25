@@ -1,0 +1,177 @@
+{
+ "final_result": "{\n  \"found\": false,\n  \"notes\": \"Located Lockheed Martin Corporation's Form 10-K for the fiscal year ended December 31, 2014. A full-text check found no occurrence of 'tourism' and no line item 'Space Tourism segment net sales'. The filing reports a 'Space Systems' segment instead; its figures have not been substituted. The requested values for 2014 and 2013 could not be found.\",\n  \"values\": [],\n  \"filing_url\": \"https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm\"\n}",
+ "steps": 13,
+ "screenshots": [
+  {
+   "path": "00001-step-3.png",
+   "step": 3,
+   "captured_at": 1795625252.272509,
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "path": "00002-step-4.png",
+   "step": 4,
+   "captured_at": 1795625256.9901066,
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "path": "00003-step-5.png",
+   "step": 5,
+   "captured_at": 1795625260.2019389,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "path": "00004-step-6.png",
+   "step": 6,
+   "captured_at": 1795625263.767517,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "path": "00005-step-7.png",
+   "step": 7,
+   "captured_at": 1795625269.464443,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "path": "00006-step-8.png",
+   "step": 8,
+   "captured_at": 1795625276.3353007,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "path": "00007-step-10.png",
+   "step": 10,
+   "captured_at": 1795625284.5461824,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "path": "00008-step-12.png",
+   "step": 12,
+   "captured_at": 1795625290.8453476,
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "path": "00009-step-13.png",
+   "step": 13,
+   "captured_at": 1795625299.3326967,
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "path": "00010-step-15.png",
+   "step": 15,
+   "captured_at": 1795625306.5666947,
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "path": "00011-step-17.png",
+   "step": 17,
+   "captured_at": 1795625310.35552,
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  }
+ ],
+ "timeline": [
+  {
+   "step": 1,
+   "at": 1795625245.646154,
+   "kind": "text",
+   "text": "I\u2019ll locate Lockheed Martin\u2019s fiscal 2014 Form 10-K in EDGAR, then check for the exact line item and the two requested years. If that line item is absent, I\u2019ll report `found=false` without substituting another segment.\n",
+   "url": null
+  },
+  {
+   "step": 2,
+   "at": 1795625245.891892,
+   "kind": "tool",
+   "text": "skill",
+   "url": null
+  },
+  {
+   "step": 3,
+   "at": 1795625252.2932932,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/"
+  },
+  {
+   "step": 4,
+   "at": 1795625257.010496,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#"
+  },
+  {
+   "step": 5,
+   "at": 1795625260.2221715,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "step": 6,
+   "at": 1795625263.7902968,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&startdt=2021-11-25&enddt=2026-11-25"
+  },
+  {
+   "step": 7,
+   "at": 1795625269.4873073,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "step": 8,
+   "at": 1795625276.3581233,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "step": 10,
+   "at": 1795625284.568871,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "step": 12,
+   "at": 1795625290.8679485,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/edgar/search/#/dateRange=custom&entityName=Lockheed%2520Martin&startdt=2015-01-01&enddt=2015-12-31"
+  },
+  {
+   "step": 13,
+   "at": 1795625299.354997,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "step": 15,
+   "at": 1795625306.589155,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "step": 17,
+   "at": 1795625310.3778217,
+   "kind": "tool",
+   "text": "browser_execute",
+   "url": "https://www.sec.gov/Archives/edgar/data/936468/000119312515038681/d808572d10k.htm"
+  },
+  {
+   "step": 18,
+   "at": 1795625318.5417476,
+   "kind": "text",
+   "text": "{\n  \"found\": false,\n  \"notes\": \"Located Lockheed Martin Corporation's Form 10-K for the fiscal year ended December 31, 2014. A full-text check found no occurrence of 'tourism' and no line item 'Space Tourism segment net sales'. The filing reports a 'Space Systems' segment instead; its figures have not been substituted. The requested values for 2014 and 2013 could not be found.\",\n  \"values\": [],\n  ",
+   "url": null
+  }
+ ],
+ "video": {
+  "path": "session-1.mp4",
+  "bytes": 1481982,
+  "started_at": "2026-11-25T16:47:19.661000+00:00"
+ }
+}
