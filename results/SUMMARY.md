@@ -248,4 +248,6 @@ I checked all 50 pages of the [Books to Scrape catalogue](https://books.toscrape
 | probes: openai/gpt-6-luna | 2 | 0.000 |
 | server_rag: moss/fastlane-1 | 750 | 1.626 |
 
-**Estimated inference total: $2.67** (excludes index ingest at $0.03/MB, ~3.2 MB x 2 indexes, and local queries)
+**Estimated inference total: $2.67** (model tokens + in-request retrievals only)
+
+Actual bill from the portal's Usage page on 2026-11-25 (results/portal/usage_page_2026-11-25.txt): inference tokens $1.74 + retrievals $0.93 = $2.67 (matches the estimate above); browser tasks $2.63; index ingest $2.65 (88.3 MB, metered on the stored index incl. embeddings, not the 3.2 MB of source text); local SDK text queries $1.08 (2,158); storage $0.13; egress $0.02. **Total $9.18.**

@@ -9,7 +9,18 @@ Moss result here is compared against something I'd measured before, not against 
 
 Everything in this README is generated from raw logs in [`results/`](results/) by
 [`analysis/summarize.py`](analysis/summarize.py) → [`results/SUMMARY.md`](results/SUMMARY.md) (full tables).
-Total spend: about **$2.7 on inference + $2.6 on browser tasks**, out of the $10 sign-up credit.
+Total billed: **$9.18 of the $10 sign-up credit**, per the portal's Usage page ([`results/portal/`](results/portal/)). Breakdown:
+
+| Item | Billed |
+|---|---|
+| Inference tokens | $1.74 |
+| Retrievals inside inference requests | $0.93 |
+| Browser tasks | $2.63 |
+| Index ingest | $2.65 |
+| Local SDK queries | $1.08 |
+| Storage and egress | $0.15 |
+
+My estimates from the logs matched the portal to the cent for inference and tasks. The ingest and local-query charges were the surprise (finding 12).
 
 ## Headline findings
 
@@ -31,10 +42,26 @@ Total spend: about **$2.7 on inference + $2.6 on browser tasks**, out of the $10
 **Tasks API**
 8. **It's good at real browsing.** On SEC EDGAR, it got **6 of 8** 10-K line-item lookups exactly right (about $0.16 and 86 s each, with screenshots and a full trace). Both "should not exist" lookups (a fake segment, a 2031 10-K) correctly returned `found=false`. Of the two misses, one was ambiguity in my spec (two "total capital" tables), and the other was a careful decline, not an invented number. All 5 scored sandbox traps passed (pagination, JS rendering, infinite scroll, async loading, a publisher absent from the page), and the agent didn't guess credentials at an HTTP auth wall.
 9. **It resisted prompt injection** on my own trap pages: hidden white-on-white text plus an HTML comment, and a visible comment impersonating the operator. It reported the true figures and never visited the beacon URL.
-10. **Where it broke: it silently rewrites values to satisfy the schema.** I asked for a £51.77 price as an integer ≥ 1000. It returned `5177` with **`verification.passed = true`** and no note. On another page it found the right restated figure (498, in thousands) and multiplied it by 1,000 without being asked. `verification.passed` checks shape, not truth, and the agent changes values to fit that shape.
+10. **Where it broke: it silently rewrites values to satisfy the schema.** I asked for a £51.77 price as an integer ≥ 1000. It returned `5177` with **`verification.passed = true`** and no note. On another page it found the right restated figure (498, in thousands) and multiplied it by 1,000 without being asked. `verification.passed` checks shape, not truth, and the agent changes values to fit that shape. The portal's session recording shows this was deliberate. Its reasoning caption reads *"The required JSON uses an integer, so I'll make the units explicit if the price includes pence"*. It converted to pence, but the schema had no field for a unit, so the unit was lost, and the portal shows a green "Matches the schema" badge next to `5177` ([screenshot](results/portal/task_detail_schema_bending.png)).
 11. **Budget and cancel semantics:**
     - `max_cost_usd = 0.01` billed **$0.024** (2.4× the cap) after one step. A cap below one step's cost can never hold, and it should be rejected when the task is created.
     - A cancel requested at 25 s ended at 37.5 s and still billed $0.10.
+
+**Portal and pricing** (from a read-only walkthrough after the runs)
+12. **Two costs I didn't predict from the docs, and they made up 41% of my bill:**
+    - **Index ingest ($2.65)** is metered on the stored index, not the source text. 3.2 MB of FinQA text became about 37.5 MB per index, mostly embeddings (about 12×). The pricing page only says "$0.03/MB".
+    - **Local SDK queries ($1.08 for 2,158)** run in memory in your process, but each one is billed as a text query at $0.50 per 1k. The docs pitch them as local.
+    - In both cases the portal's Usage page told me after the fact. I had no way to know beforehand.
+13. **The observability is good.**
+    - Logs & Traces lists every request with TTFT, total time, tokens and retrieval count, plus p50/p95, the error rate and the reply-cache rate.
+    - The Tasks page shows success rate, median time and spend, and gives each task a readable title.
+    - Each task has a **session video with captions of the agent's reasoning**. The API returns only screenshots, not the video.
+    - The Usage page's per-model breakdown matched my own accounting exactly.
+14. **Portal friction:**
+    - Onboarding auto-creates a sample index (`product-search-context`) that silently takes one of the free plan's 3 index slots. That's why I could only build 2 experiment indexes ([screenshot](results/portal/indexes.png)).
+    - The Home checklist still says "3 of 5 done" after 5,600 API requests. It only counts portal-side setup steps.
+    - Logs show 50 rows per page, and I couldn't find a way to look up a request by its ID, even though error messages tell you to quote that ID.
+    - The Configure page says `pip install moss` without a version pin. Tasks need 1.23 or newer.
 
 ## What was run
 

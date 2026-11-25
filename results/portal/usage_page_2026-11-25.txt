@@ -1,0 +1,114 @@
+Usage
+All Projects
+Billing Period
+Nov 24 - Nov 25
+Invoices
+Usage trends
+Nov 24, 2026 - Nov 25, 2026
+11-24
+11-25
+0
+650
+1,300
+1,950
+2,600
+Ingest
+Egress
+Storage
+Session minutes
+Text queries
+Inference tokens
+Resource
+Usage
+Charge
+Storage
+88.3 MB / Unlimited
+$0.13
+Monthly ingest
+88.3 MB / Unlimited
+$2.65
+Monthly egress
+188.6 MB / Unlimited
+$0.02
+Session minutes
+0.1 min / Unlimited
+$0.00
+Text queries
+2,158
+$1.08
+Monthly active devices
+1 / Unlimited
+$0.00
+Inference tokens
+4.6M in / 5.4M cached / 746K out
+$1.74
+moss/fastlane-1
+2.7M / 3.5M / 303K
+$1.31
+anthropic/claude-haiku-5.5
+1.5M / 1.9M / 366K
+$0.35
+openai/gpt-6-luna
+382K / 0 / 76.9K
+$0.08
+google/gemini-3.5-flash-lite
+142 / 0 / 22
+$0.00
+Retrievals
+1,865 / Unlimited
+$0.93
+Browser tasks
+25 tasks
+$2.63
+Model tokens
+618K in / 3.3M cached / 33.7K out
+$2.61
+moss-balanced
+618K / 3.3M / 33.7K
+$2.61
+Cloud browser time
+20 min
+$0.01
+Total Accumulated Cycle Cost
+$9.18
+Ingest
+88.3 MB
+11-25
+0B
+23.8MB
+47.7MB
+71.5MB
+95.4MB
+Egress
+188.6 MB
+11-25
+0B
+47.7MB
+95.4MB
+143.1MB
+190.7MB
+Session minutes
+0.111 min
+11-25
+0
+0.03
+0.06
+0.09
+0.12
+Text queries
+2.2K
+11-25
+0
+550
+1.1K
+1.6K
+2.2K
+Inference tokens
+14.6M
+11-24
+11-25
+0
+4M
+8M
+12M
+16M

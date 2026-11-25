@@ -248,7 +248,11 @@ def spend():
     lines.append("## 7. Estimated inference spend (logged usage x list price)\n")
     table(["experiment: model", "calls", "est. $"], [[k, v[0], f"{v[1]:.3f}"] for k, v in sorted(by.items())])
     lines.append(f"**Estimated inference total: ${sum(v[1] for v in by.values()):.2f}** "
-                 "(excludes index ingest at $0.03/MB, ~3.2 MB x 2 indexes, and local queries)\n")
+                 "(model tokens + in-request retrievals only)\n")
+    lines.append("Actual bill from the portal's Usage page on 2026-11-25 (results/portal/usage_page_2026-11-25.txt): "
+                 "inference tokens $1.74 + retrievals $0.93 = $2.67 (matches the estimate above); browser tasks $2.63; "
+                 "index ingest $2.65 (88.3 MB, metered on the stored index incl. embeddings, not the 3.2 MB of source "
+                 "text); local SDK text queries $1.08 (2,158); storage $0.13; egress $0.02. **Total $9.18.**\n")
 
 
 def main() -> None:
