@@ -1,0 +1,139 @@
+evidence mode: 145 new question-level calls
+llama: 560 labeled rows, 560 to judge
+fastlane: 554 labeled rows, 554 to judge
+haiku: 560 labeled rows, 560 to judge
+luna: 554 labeled rows, 554 to judge
+{
+ "llama": {
+  "A_grounding": {
+   "n": 560,
+   "positives": 161,
+   "precision": 0.4,
+   "recall": 0.54,
+   "f1": 0.46,
+   "accuracy": 0.64,
+   "flag_all_f1": 0.45
+  },
+  "B_grounding": {
+   "n": 560,
+   "positives": 41,
+   "precision": 0.13,
+   "recall": 0.66,
+   "f1": 0.21,
+   "accuracy": 0.64,
+   "flag_all_f1": 0.14
+  },
+  "B_evidence": {
+   "n": 560,
+   "positives": 41,
+   "precision": 0.24,
+   "recall": 0.41,
+   "f1": 0.3,
+   "accuracy": 0.86,
+   "flag_all_f1": 0.14
+  },
+  "grounding_recall_by_kind": {
+   "fabricated_without_evidence": "27/41",
+   "wrong_despite_evidence": "60/120"
+  }
+ },
+ "fastlane": {
+  "A_grounding": {
+   "n": 554,
+   "positives": 151,
+   "precision": 0.42,
+   "recall": 0.58,
+   "f1": 0.49,
+   "accuracy": 0.67,
+   "flag_all_f1": 0.43
+  },
+  "B_grounding": {
+   "n": 554,
+   "positives": 37,
+   "precision": 0.14,
+   "recall": 0.76,
+   "f1": 0.23,
+   "accuracy": 0.66,
+   "flag_all_f1": 0.13
+  },
+  "B_evidence": {
+   "n": 554,
+   "positives": 37,
+   "precision": 0.25,
+   "recall": 0.46,
+   "f1": 0.32,
+   "accuracy": 0.87,
+   "flag_all_f1": 0.13
+  },
+  "grounding_recall_by_kind": {
+   "fabricated_without_evidence": "28/37",
+   "wrong_despite_evidence": "59/114"
+  }
+ },
+ "haiku": {
+  "A_grounding": {
+   "n": 560,
+   "positives": 113,
+   "precision": 0.4,
+   "recall": 0.56,
+   "f1": 0.47,
+   "accuracy": 0.74,
+   "flag_all_f1": 0.34
+  },
+  "B_grounding": {
+   "n": 560,
+   "positives": 19,
+   "precision": 0.08,
+   "recall": 0.68,
+   "f1": 0.15,
+   "accuracy": 0.73,
+   "flag_all_f1": 0.07
+  },
+  "B_evidence": {
+   "n": 560,
+   "positives": 19,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "accuracy": 0.91,
+   "flag_all_f1": 0.07
+  },
+  "grounding_recall_by_kind": {
+   "wrong_despite_evidence": "50/94",
+   "fabricated_without_evidence": "13/19"
+  }
+ },
+ "luna": {
+  "A_grounding": {
+   "n": 554,
+   "positives": 125,
+   "precision": 0.28,
+   "recall": 0.42,
+   "f1": 0.34,
+   "accuracy": 0.63,
+   "flag_all_f1": 0.37
+  },
+  "B_grounding": {
+   "n": 554,
+   "positives": 22,
+   "precision": 0.06,
+   "recall": 0.5,
+   "f1": 0.11,
+   "accuracy": 0.66,
+   "flag_all_f1": 0.08
+  },
+  "B_evidence": {
+   "n": 554,
+   "positives": 22,
+   "precision": 0.09,
+   "recall": 0.23,
+   "f1": 0.13,
+   "accuracy": 0.88,
+   "flag_all_f1": 0.08
+  },
+  "grounding_recall_by_kind": {
+   "wrong_despite_evidence": "42/103",
+   "fabricated_without_evidence": "11/22"
+  }
+ }
+}

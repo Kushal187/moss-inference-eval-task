@@ -9,13 +9,14 @@ Moss result here is compared against something I'd measured before, not against 
 
 Everything in this README is generated from raw logs in [`results/`](results/) by
 [`analysis/summarize.py`](analysis/summarize.py) → [`results/SUMMARY.md`](results/SUMMARY.md) (full tables).
-Total spend: about **$2.0 on inference + $2.6 on browser tasks**, out of the $10 sign-up credit.
+Total spend: about **$2.7 on inference + $2.6 on browser tasks**, out of the $10 sign-up credit.
 
 ## Headline findings
 
 **Inference API**
 1. **fastlane-1 is fast, and the claim holds.** TTFT p50 is **164–175 ms** (p95 ~250 ms) across 600 calls, compared with ~410 ms for claude-haiku-5.5 and ~1.4 s for gpt-6-luna through the same gateway. Given the same evidence, its accuracy is in line with llama-3.3-70b (54–69% vs 60–61%) and best with structured output (68.7%). The sub-200 ms figure holds for short or cached prompts. Cold TTFT grows with prompt length: 145 ms at 0.5k tokens, 335 ms at 4k, 4.2 s at 64k, and 21.6 s at 205k. The prefix cache brings a repeated 205k prompt down to 0.8–1.2 s, but one immediate repeat at 64k missed the cache. The burst limit behaves as documented: 30 simultaneous calls gave 10 successes and 20 immediate 429s with `Retry-After: 1`.
 2. **With chain-of-thought, fastlane-1 never declines.** When the retrieved evidence lacked the needed figures, fastlane+CoT produced a number **every time** (100%, compared with 46% for llama and 25% for haiku on the same questions). With few-shot it's the best of the four (20%). The sample is small (about 20 no-evidence questions per prompt), but the gap is consistent.
+2b. **fastlane-1 works well as a hallucination judge.** I re-ran my project's LLM judge, with prompts unchanged, through Moss over all 2,228 labeled answers ([`inference/judge_rescore.py`](inference/judge_rescore.py)). On the original 560 llama answers, **fastlane-as-judge matched my best saved judge** (F1 0.54 vs haiku-4.5 on Bedrock at 0.54) with the highest precision of any judge I've tried (0.71), at a fraction of the cost and latency. claude-haiku-5.5 through Moss did worse (0.46, barely above the 0.45 flag-everything baseline). Moss refuses `temperature=0` and JSON mode for Anthropic models, so that judge couldn't run with the original settings, and I can't separate the model from the constraint. The detector's quality also **depends on which model wrote the answers**. On luna's answers, haiku-5.5 fell below the flag-everything baseline (0.34 vs 0.37). On haiku's own fabrications, the evidence-sufficiency judge caught **none**: haiku only invented numbers when the evidence *looked* complete, which is exactly what that judge can't see. That last result rests on 7 distinct questions.
 3. **Built-in retrieval can't be scoped, and accuracy halves.** FinQA questions must be searched within their own filing. Moss's local SDK supports metadata filters (Recall@5 80.3%, matching Weaviate dense at **2.5 ms vs 58 ms**). Server-side retrieval (`X-Moss-Indexes`, `moss_search`) has **no filter**. Unfiltered, Recall@5 falls to 52%, and **3.5 of the top 5 chunks come from other companies' filings**. End to end, fastlane accuracy drops from 54–69% to **26.7%** with built-in retrieval. The `moss_search` tool path gets 29–42%, but runs 4–6 searches per question, uses about 20× the input tokens, and has 1.2–2.6 s TTFT.
 4. **You can't see what was retrieved.** Pre-model retrieval returns no chunks or citations (only an `X-Moss-Retrieve-Ms` header). `moss_search` returns passage text with **no doc id or metadata**, so you can't tell which filing a number came from. My hallucination detector needs exactly that information, so it can't run on Moss's built-in RAG.
 5. **The reply cache ignores `temperature` and is on by default.** At `temperature=1`, four "invent a random word" calls all returned `plumed`. With `X-Moss-Cache: off` they gave four different words. Nothing in the response marks a cache hit, so sampling and self-consistency evals silently collapse to one answer.
@@ -41,6 +42,7 @@ Total spend: about **$2.0 on inference + $2.6 on browser tasks**, out of the $10
 |---|---|---|---|
 | 1 | Generator swap: 150 FinQA dev questions × 4 prompt strategies, **identical** retrieved evidence, through fastlane-1 / claude-haiku-5.5 / gpt-6-luna vs. the saved llama-3.3-70b baseline. Streamed; TTFT measured client-side. | [`inference/gen_swap.py`](inference/gen_swap.py) | `results/generation/` |
 | 2 | Hallucination profile using the FinQA project's own labeling rules | [`inference/hallucination.py`](inference/hallucination.py) | `results/hallucination_profile.json` |
+| 2b | LLM-judge re-scoring of all four generators' answers (grounding + evidence modes), with claude-haiku-5.5 and fastlane-1 as judges via Moss | [`inference/judge_rescore.py`](inference/judge_rescore.py) | `results/judge/` |
 | 3a | Moss retrieval Recall@k on the test split (1,147 q), filtered by filing vs unfiltered, vs. saved Weaviate numbers | [`inference/build_index.py`](inference/build_index.py), [`inference/retrieval_recall.py`](inference/retrieval_recall.py) | `results/retrieval/` |
 | 3b | Server-side RAG: closed-book, `X-Moss-Indexes`, `moss_search` tool, each with and without a ticker/year workaround | [`inference/server_rag.py`](inference/server_rag.py) | `results/server_rag/` |
 | 4 | API probes: error matrix, caches, burst, context length, hidden-token overhead | [`inference/api_probes.py`](inference/api_probes.py) | `results/probes/` |
@@ -68,6 +70,7 @@ cp .env.example .env   # MOSS_PROJECT_ID, MOSS_PROJECT_KEY
 
 - Baseline llama latencies are from the original project (Groq/Bedrock, not streamed). They're context, not a head-to-head latency comparison.
 - The hallucination rates on no-evidence rows rest on about 20 questions per prompt strategy (the same rows for every model).
+- Judge rows aren't independent: each question appears up to 4 times (once per prompt strategy), so the effective n is about 140 questions. claude-haiku-5.5 judging haiku's own answers is self-evaluation.
 - Moss's local query uses default hybrid `alpha=0.8`. The Weaviate baseline was tuned to `alpha=0.6`.
 - Task results are single runs. Agent behaviour varies between runs.
 - Docs gaps I hit along the way are in [`notes/moss-docs-notes.md`](notes/moss-docs-notes.md).

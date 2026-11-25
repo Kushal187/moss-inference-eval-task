@@ -1,0 +1,37 @@
+evidence mode: 131 new question-level calls
+llama: 560 labeled rows, 560 to judge
+{
+ "llama": {
+  "A_grounding": {
+   "n": 560,
+   "positives": 161,
+   "precision": 0.71,
+   "recall": 0.44,
+   "f1": 0.54,
+   "accuracy": 0.79,
+   "flag_all_f1": 0.45
+  },
+  "B_grounding": {
+   "n": 560,
+   "positives": 41,
+   "precision": 0.24,
+   "recall": 0.59,
+   "f1": 0.34,
+   "accuracy": 0.83,
+   "flag_all_f1": 0.14
+  },
+  "B_evidence": {
+   "n": 560,
+   "positives": 41,
+   "precision": 0.2,
+   "recall": 0.22,
+   "f1": 0.21,
+   "accuracy": 0.88,
+   "flag_all_f1": 0.14
+  },
+  "grounding_recall_by_kind": {
+   "fabricated_without_evidence": "24/41",
+   "wrong_despite_evidence": "47/120"
+  }
+ }
+}

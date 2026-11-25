@@ -50,6 +50,33 @@ Baseline latency is non-streamed end-to-end from the original project (Groq/Bedr
 | openai/gpt-6-luna | cot | 150 | 0.263 | 0.185 | 27 |
 | openai/gpt-6-luna | ALL | 450 | 0.271 | 0.23 | 98 |
 
+## 2b. LLM-judge re-scoring (FinQA project's judge prompts, called through Moss)
+
+A = any answer not supported by its evidence (arithmetic errors + fabrications). B = answered although the evidence lacked the figures. `flag-all F1` is the baseline of flagging every answer. Saved results from the original project (judging llama-3.3-70b answers, Bedrock): A grounding: llama-judge F1 0.41, claude-haiku-4.5 F1 0.54 (P 0.61 / R 0.49); B: grounding F1 0.35, evidence F1 0.41.
+
+| judge | answers from | definition / mode | n | positives | precision | recall | F1 | flag-all F1 | accuracy |
+|---|---|---|---|---|---|---|---|---|---|
+| anthropic/claude-haiku-5.5 | llama | A_grounding | 560 | 161 | 0.4 | 0.54 | 0.46 | 0.45 | 0.64 |
+| anthropic/claude-haiku-5.5 | llama | B_grounding | 560 | 41 | 0.13 | 0.66 | 0.21 | 0.14 | 0.64 |
+| anthropic/claude-haiku-5.5 | llama | B_evidence | 560 | 41 | 0.24 | 0.41 | 0.3 | 0.14 | 0.86 |
+| anthropic/claude-haiku-5.5 | llama | grounding recall by kind |  |  |  |  | {"fabricated_without_evidence": "27/41", "wrong_despite_evidence": "60/120"} |  |  |
+| anthropic/claude-haiku-5.5 | fastlane | A_grounding | 554 | 151 | 0.42 | 0.58 | 0.49 | 0.43 | 0.67 |
+| anthropic/claude-haiku-5.5 | fastlane | B_grounding | 554 | 37 | 0.14 | 0.76 | 0.23 | 0.13 | 0.66 |
+| anthropic/claude-haiku-5.5 | fastlane | B_evidence | 554 | 37 | 0.25 | 0.46 | 0.32 | 0.13 | 0.87 |
+| anthropic/claude-haiku-5.5 | fastlane | grounding recall by kind |  |  |  |  | {"fabricated_without_evidence": "28/37", "wrong_despite_evidence": "59/114"} |  |  |
+| anthropic/claude-haiku-5.5 | haiku | A_grounding | 560 | 113 | 0.4 | 0.56 | 0.47 | 0.34 | 0.74 |
+| anthropic/claude-haiku-5.5 | haiku | B_grounding | 560 | 19 | 0.08 | 0.68 | 0.15 | 0.07 | 0.73 |
+| anthropic/claude-haiku-5.5 | haiku | B_evidence | 560 | 19 | 0.0 | 0.0 | 0.0 | 0.07 | 0.91 |
+| anthropic/claude-haiku-5.5 | haiku | grounding recall by kind |  |  |  |  | {"wrong_despite_evidence": "50/94", "fabricated_without_evidence": "13/19"} |  |  |
+| anthropic/claude-haiku-5.5 | luna | A_grounding | 554 | 125 | 0.28 | 0.42 | 0.34 | 0.37 | 0.63 |
+| anthropic/claude-haiku-5.5 | luna | B_grounding | 554 | 22 | 0.06 | 0.5 | 0.11 | 0.08 | 0.66 |
+| anthropic/claude-haiku-5.5 | luna | B_evidence | 554 | 22 | 0.09 | 0.23 | 0.13 | 0.08 | 0.88 |
+| anthropic/claude-haiku-5.5 | luna | grounding recall by kind |  |  |  |  | {"wrong_despite_evidence": "42/103", "fabricated_without_evidence": "11/22"} |  |  |
+| moss/fastlane-1 | llama | A_grounding | 560 | 161 | 0.71 | 0.44 | 0.54 | 0.45 | 0.79 |
+| moss/fastlane-1 | llama | B_grounding | 560 | 41 | 0.24 | 0.59 | 0.34 | 0.14 | 0.83 |
+| moss/fastlane-1 | llama | B_evidence | 560 | 41 | 0.2 | 0.22 | 0.21 | 0.14 | 0.88 |
+| moss/fastlane-1 | llama | grounding recall by kind |  |  |  |  | {"fabricated_without_evidence": "24/41", "wrong_despite_evidence": "47/120"} |  |  |
+
 ## 3. Retrieval quality, FinQA test split (n=1147)
 
 | retriever | R@1 | R@3 | R@5 | R@10 | latency ms | wrong-filing chunks in top 5 |
@@ -213,10 +240,12 @@ I checked all 50 pages of the [Books to Scrape catalogue](https://books.toscrape
 | generation: anthropic/claude-haiku-5.5 | 600 | 0.071 |
 | generation: moss/fastlane-1 | 600 | 0.243 |
 | generation: openai/gpt-6-luna | 600 | 0.077 |
+| judge: anthropic/claude-haiku-5.5 | 2001 | 0.283 |
+| judge: moss/fastlane-1 | 617 | 0.275 |
 | probes: anthropic/claude-haiku-5.5 | 2 | 0.000 |
 | probes: google/gemini-3.5-flash-lite | 2 | 0.000 |
 | probes: moss/fastlane-1 | 33 | 0.091 |
 | probes: openai/gpt-6-luna | 2 | 0.000 |
 | server_rag: moss/fastlane-1 | 750 | 1.626 |
 
-**Estimated inference total: $2.11** (excludes index ingest at $0.03/MB, ~3.2 MB x 2 indexes, and local queries)
+**Estimated inference total: $2.67** (excludes index ingest at $0.03/MB, ~3.2 MB x 2 indexes, and local queries)
