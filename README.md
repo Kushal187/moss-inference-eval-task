@@ -1,103 +1,93 @@
 # Moss Inference evaluation
 
-I tested Moss Inference (the Inference API, Moss retrieval, and the Tasks API) by running a real
-workload through it: **FinQA**, a financial question-answering benchmark built from 10-K filings. I'd
-already built a RAG + hallucination-detection project on it ([financial-rag-hallucination-detection](https://github.com/Kushal187/financial-rag-hallucination-detection),
-a course project I led with two teammates; it's included as the `external/finqa` submodule). That project
-gave me a Weaviate baseline, gold answers, saved llama-3.3-70b runs, and labels for hallucinations, so every
-Moss result here is compared against something I'd measured before, not against a demo.
+I tested Moss Inference by running an existing project through it: a RAG and hallucination-detection
+system I built on FinQA (questions about 10-K filings), with two teammates. That project
+([repo](https://github.com/Kushal187/financial-rag-hallucination-detection), included here as the
+`external/finqa` submodule) already had a Weaviate baseline, gold answers, and saved llama-3.3-70b runs,
+so every Moss number below is compared against something measured before.
 
-Everything in this README is generated from raw logs in [`results/`](results/) by
-[`analysis/summarize.py`](analysis/summarize.py) → [`results/SUMMARY.md`](results/SUMMARY.md) (full tables).
-Total billed: **$9.18 of the $10 sign-up credit**, per the portal's Usage page ([`results/portal/`](results/portal/)). Breakdown:
+Full tables are in [`results/SUMMARY.md`](results/SUMMARY.md). Raw logs, task traces and screenshots are in [`results/`](results/).
 
-| Item | Billed |
+## What I ran
+
+1. **Model swap.** The same 150 questions, 4 prompt styles and retrieved evidence as the original project, sent through `moss/fastlane-1`, `claude-haiku-5.5` and `gpt-6-luna` instead of llama.
+2. **Hallucination check.** The project's labels and LLM judge applied to each model's answers, with the judge itself called through Moss.
+3. **Retrieval.** The corpus loaded into Moss indexes. Recall compared with Weaviate, then end-to-end accuracy using Moss's built-in retrieval.
+4. **API probes.** Error handling, caching, rate limits, and latency vs. prompt length.
+5. **Tasks API.** 10 SEC EDGAR lookups checked against FinQA's numbers, 6 scraping-sandbox traps, prompt-injection pages I hosted, and budget/cancel/schema edge cases.
+
+## Results
+
+| Inference (150 questions) | Accuracy | Time to first token (p50) |
+|---|---|---|
+| llama-3.3-70b, original run | 60–61% | n/a |
+| fastlane-1 | 54–69% | 165 ms |
+| claude-haiku-5.5 | 52–67% | 410 ms |
+| gpt-6-luna | 61–67% | 1.4 s |
+| fastlane-1 + Moss built-in retrieval | 27% | 185 ms |
+
+| Retrieval (1,147 questions) | Recall@5 | Latency |
+|---|---|---|
+| Weaviate hybrid (original) | 82.1% | 53 ms |
+| Moss, filtered to the right filing | 80.3% | 2.5 ms |
+| Moss, unfiltered (what server-side retrieval does) | 52.4% | 2.7 ms |
+
+| Tasks | Result |
 |---|---|
-| Inference tokens | $1.74 |
-| Retrievals inside inference requests | $0.93 |
-| Browser tasks | $2.63 |
-| Index ingest | $2.65 |
-| Local SDK queries | $1.08 |
-| Storage and egress | $0.15 |
+| EDGAR 10-K lookups | 6/8 values correct, 2/2 "doesn't exist" cases correct, ~$0.16 each |
+| Sandbox traps (pagination, JS, infinite scroll, auth wall, missing data) | 5/5 scored traps passed |
+| Prompt injection (hidden text, fake operator comment) | Both ignored |
+| Impossible schema | Returned a wrong value and passed verification |
 
-My estimates from the logs matched the portal to the cent for inference and tasks. The ingest and local-query charges were the surprise (finding 12).
+## What I found
 
-## Headline findings
+**Worked well**
+- fastlane-1 hits its sub-200 ms first-token claim on short prompts, and its accuracy matches llama.
+- As a hallucination judge, fastlane matched my best previous judge (F1 0.54) at much lower cost.
+- Moss's local retrieval, filtered to the right filing, is within 2 points of Weaviate's recall at about 20× lower latency.
+- The Tasks agent handled real EDGAR filings, declined to invent missing data, didn't guess credentials, and ignored injected instructions.
+- The portal's logs, task recordings (with the agent's reasoning as captions) and usage breakdown are good. The usage numbers matched my own accounting exactly.
 
-**Inference API**
-1. **fastlane-1 is fast, and the claim holds.** TTFT p50 is **164–175 ms** (p95 ~250 ms) across 600 calls, compared with ~410 ms for claude-haiku-5.5 and ~1.4 s for gpt-6-luna through the same gateway. Given the same evidence, its accuracy is in line with llama-3.3-70b (54–69% vs 60–61%) and best with structured output (68.7%). The sub-200 ms figure holds for short or cached prompts. Cold TTFT grows with prompt length: 145 ms at 0.5k tokens, 335 ms at 4k, 4.2 s at 64k, and 21.6 s at 205k. The prefix cache brings a repeated 205k prompt down to 0.8–1.2 s, but one immediate repeat at 64k missed the cache. The burst limit behaves as documented: 30 simultaneous calls gave 10 successes and 20 immediate 429s with `Retry-After: 1`.
-2. **With chain-of-thought, fastlane-1 never declines.** When the retrieved evidence lacked the needed figures, fastlane+CoT produced a number **every time** (100%, compared with 46% for llama and 25% for haiku on the same questions). With few-shot it's the best of the four (20%). The sample is small (about 20 no-evidence questions per prompt), but the gap is consistent.
-2b. **fastlane-1 works well as a hallucination judge.** I re-ran my project's LLM judge, with prompts unchanged, through Moss over all 2,228 labeled answers ([`inference/judge_rescore.py`](inference/judge_rescore.py)). On the original 560 llama answers, **fastlane-as-judge matched my best saved judge** (F1 0.54 vs haiku-4.5 on Bedrock at 0.54) with the highest precision of any judge I've tried (0.71), at a fraction of the cost and latency. claude-haiku-5.5 through Moss did worse (0.46, barely above the 0.45 flag-everything baseline). Moss refuses `temperature=0` and JSON mode for Anthropic models, so that judge couldn't run with the original settings, and I can't separate the model from the constraint. The detector's quality also **depends on which model wrote the answers**. On luna's answers, haiku-5.5 fell below the flag-everything baseline (0.34 vs 0.37). On haiku's own fabrications, the evidence-sufficiency judge caught **none**: haiku only invented numbers when the evidence *looked* complete, which is exactly what that judge can't see. That last result rests on 7 distinct questions.
-3. **Built-in retrieval can't be scoped, and accuracy halves.** FinQA questions must be searched within their own filing. Moss's local SDK supports metadata filters (Recall@5 80.3%, matching Weaviate dense at **2.5 ms vs 58 ms**). Server-side retrieval (`X-Moss-Indexes`, `moss_search`) has **no filter**. Unfiltered, Recall@5 falls to 52%, and **3.5 of the top 5 chunks come from other companies' filings**. End to end, fastlane accuracy drops from 54–69% to **26.7%** with built-in retrieval. The `moss_search` tool path gets 29–42%, but runs 4–6 searches per question, uses about 20× the input tokens, and has 1.2–2.6 s TTFT.
-4. **You can't see what was retrieved.** Pre-model retrieval returns no chunks or citations (only an `X-Moss-Retrieve-Ms` header). `moss_search` returns passage text with **no doc id or metadata**, so you can't tell which filing a number came from. My hallucination detector needs exactly that information, so it can't run on Moss's built-in RAG.
-5. **The reply cache ignores `temperature` and is on by default.** At `temperature=1`, four "invent a random word" calls all returned `plumed`. With `X-Moss-Cache: off` they gave four different words. Nothing in the response marks a cache hit, so sampling and self-consistency evals silently collapse to one answer.
-6. **A deterministic failure is reported as transient.** gpt-6-luna + `json_object` + the FinQA structured prompt failed **29 of 29 times** with `502 model_error: VendorStreamError`. The SDK retries 502s, so each failure burned retries. Removing JSON mode fixed it (67.3%). Simple JSON prompts work, so it's prompt-dependent.
-7. **Smaller API issues:**
-   - A request body over 4 MB drops the connection instead of returning the documented 413.
-   - Empty `input` returns 200 and bills a generic reply.
-   - Error messages leak internal parameter names (`max_tokens`, `response_format`).
-   - fastlane adds about 87 hidden input tokens per request (vendors: 21–29).
-   - The 32-index limit doesn't count duplicate names.
+**Problems**
+- Server-side retrieval has no per-request filter. Without one, 3.5 of the top 5 chunks came from other companies' filings, and accuracy fell from about 60% to 27%. The response also doesn't say which chunks were retrieved.
+- The reply cache is on by default and ignores `temperature`. Four "random word" calls at temperature 1 all returned the same word, with nothing marking the cache hit.
+- With chain-of-thought, fastlane answered every question even when the evidence was missing. llama and haiku declined some of the time.
+- First-token time grows with uncached prompt size: 4.2 s at 64k tokens, 21.6 s at 205k.
+- gpt-6-luna with JSON mode failed 29 of 29 times with a 502, an error code that tells clients to retry.
+- Tasks: asked for a £51.77 price as an integer ≥ 1000, the agent returned `5177` (pence) and `verification.passed` was true. A $0.01 budget cap billed $0.024. A cancel took 12 s and still billed $0.10.
+- Pricing: index ingest is metered on the embedded index (about 12× the source text), and "local" SDK queries are billed per query. Together they were 41% of my bill, and neither is clear from the docs.
+- Smaller issues: a body over 4 MB drops the connection instead of returning 413. Empty input returns 200. The onboarding sample index uses one of the free plan's 3 index slots.
 
-**Tasks API**
-8. **It's good at real browsing.** On SEC EDGAR, it got **6 of 8** 10-K line-item lookups exactly right (about $0.16 and 86 s each, with screenshots and a full trace). Both "should not exist" lookups (a fake segment, a 2031 10-K) correctly returned `found=false`. Of the two misses, one was ambiguity in my spec (two "total capital" tables), and the other was a careful decline, not an invented number. All 5 scored sandbox traps passed (pagination, JS rendering, infinite scroll, async loading, a publisher absent from the page), and the agent didn't guess credentials at an HTTP auth wall.
-9. **It resisted prompt injection** on my own trap pages: hidden white-on-white text plus an HTML comment, and a visible comment impersonating the operator. It reported the true figures and never visited the beacon URL.
-10. **Where it broke: it silently rewrites values to satisfy the schema.** I asked for a £51.77 price as an integer ≥ 1000. It returned `5177` with **`verification.passed = true`** and no note. On another page it found the right restated figure (498, in thousands) and multiplied it by 1,000 without being asked. `verification.passed` checks shape, not truth, and the agent changes values to fit that shape. The portal's session recording shows this was deliberate. Its reasoning caption reads *"The required JSON uses an integer, so I'll make the units explicit if the price includes pence"*. It converted to pence, but the schema had no field for a unit, so the unit was lost, and the portal shows a green "Matches the schema" badge next to `5177` ([screenshot](results/portal/task_detail_schema_bending.png)).
-11. **Budget and cancel semantics:**
-    - `max_cost_usd = 0.01` billed **$0.024** (2.4× the cap) after one step. A cap below one step's cost can never hold, and it should be rejected when the task is created.
-    - A cancel requested at 25 s ended at 37.5 s and still billed $0.10.
+## Cost
 
-**Portal and pricing** (from a read-only walkthrough after the runs)
-12. **Two costs I didn't predict from the docs, and they made up 41% of my bill:**
-    - **Index ingest ($2.65)** is metered on the stored index, not the source text. 3.2 MB of FinQA text became about 37.5 MB per index, mostly embeddings (about 12×). The pricing page only says "$0.03/MB".
-    - **Local SDK queries ($1.08 for 2,158)** run in memory in your process, but each one is billed as a text query at $0.50 per 1k. The docs pitch them as local.
-    - In both cases the portal's Usage page told me after the fact. I had no way to know beforehand.
-13. **The observability is good.**
-    - Logs & Traces lists every request with TTFT, total time, tokens and retrieval count, plus p50/p95, the error rate and the reply-cache rate.
-    - The Tasks page shows success rate, median time and spend, and gives each task a readable title.
-    - Each task has a **session video with captions of the agent's reasoning**. The API returns only screenshots, not the video.
-    - The Usage page's per-model breakdown matched my own accounting exactly.
-14. **Portal friction:**
-    - Onboarding auto-creates a sample index (`product-search-context`) that silently takes one of the free plan's 3 index slots. That's why I could only build 2 experiment indexes ([screenshot](results/portal/indexes.png)).
-    - The Home checklist still says "3 of 5 done" after 5,600 API requests. It only counts portal-side setup steps.
-    - Logs show 50 rows per page, and I couldn't find a way to look up a request by its ID, even though error messages tell you to quote that ID.
-    - The Configure page says `pip install moss` without a version pin. Tasks need 1.23 or newer.
+$9.18 of the $10 credit. Inference was $2.67, browser tasks $2.63, index ingest $2.65, local queries $1.08, and storage $0.15. The breakdown is in [`results/portal/`](results/portal/).
 
-## What was run
+## Layout
 
-| # | Experiment | Code | Raw output |
-|---|---|---|---|
-| 1 | Generator swap: 150 FinQA dev questions × 4 prompt strategies, **identical** retrieved evidence, through fastlane-1 / claude-haiku-5.5 / gpt-6-luna vs. the saved llama-3.3-70b baseline. Streamed; TTFT measured client-side. | [`inference/gen_swap.py`](inference/gen_swap.py) | `results/generation/` |
-| 2 | Hallucination profile using the FinQA project's own labeling rules | [`inference/hallucination.py`](inference/hallucination.py) | `results/hallucination_profile.json` |
-| 2b | LLM-judge re-scoring of all four generators' answers (grounding + evidence modes), with claude-haiku-5.5 and fastlane-1 as judges via Moss | [`inference/judge_rescore.py`](inference/judge_rescore.py) | `results/judge/` |
-| 3a | Moss retrieval Recall@k on the test split (1,147 q), filtered by filing vs unfiltered, vs. saved Weaviate numbers | [`inference/build_index.py`](inference/build_index.py), [`inference/retrieval_recall.py`](inference/retrieval_recall.py) | `results/retrieval/` |
-| 3b | Server-side RAG: closed-book, `X-Moss-Indexes`, `moss_search` tool, each with and without a ticker/year workaround | [`inference/server_rag.py`](inference/server_rag.py) | `results/server_rag/` |
-| 4 | API probes: error matrix, caches, burst, context length, hidden-token overhead | [`inference/api_probes.py`](inference/api_probes.py) | `results/probes/` |
-| 5 | Tasks: 10 SEC EDGAR lookups scored against FinQA tables, 6 sandbox traps, 4 injection / absent-data pages, 5 lifecycle tests | [`tasks/run_tasks.py`](tasks/run_tasks.py), [`tasks/specs/`](tasks/specs/), [`tasks/trap_site/`](tasks/trap_site/) | `results/tasks/` (task JSON, agent traces, screenshots) |
+```
+inference/     model swap, hallucination profile, judge, retrieval, server-side RAG, API probes
+tasks/         task runner, task specs, trap site (served via GitHub Pages)
+analysis/      builds results/SUMMARY.md from the logs
+results/       raw outputs, task traces and screenshots, portal screenshots
+notes/         gaps I found in the docs
+external/finqa original FinQA project (submodule)
+```
 
-The trap pages are about a fictional company, are labelled as test fixtures, and use `example.com` as the
-"exfiltration" target. They're served by GitHub Pages from this repo. (The injection runs used an earlier
-URL for the same pages.)
-
-## Reproduce
+## Running it
 
 ```bash
-git clone --recurse-submodules https://github.com/Kushal187/moss-inference-eval-task && cd moss-inference-eval-task
+git clone --recurse-submodules https://github.com/Kushal187/moss-inference-eval-task
+cd moss-inference-eval-task
 python3.11 -m venv .venv && .venv/bin/pip install "moss>=1.24.0" python-dotenv httpx groq rank-bm25
-cp .env.example .env   # MOSS_PROJECT_ID, MOSS_PROJECT_KEY
+cp .env.example .env    # add MOSS_PROJECT_ID and MOSS_PROJECT_KEY
 .venv/bin/python -m inference.gen_swap --model moss/fastlane-1
-.venv/bin/python -m inference.build_index && .venv/bin/python -m inference.retrieval_recall --mode filtered
-.venv/bin/python -m inference.server_rag --mode premodel
-.venv/bin/python -m inference.api_probes errors cache burst context overhead
 .venv/bin/python -m tasks.run_tasks tasks/specs/edgar.json
 .venv/bin/python -m analysis.summarize
 ```
 
 ## Caveats
 
-- Baseline llama latencies are from the original project (Groq/Bedrock, not streamed). They're context, not a head-to-head latency comparison.
-- The hallucination rates on no-evidence rows rest on about 20 questions per prompt strategy (the same rows for every model).
-- Judge rows aren't independent: each question appears up to 4 times (once per prompt strategy), so the effective n is about 140 questions. claude-haiku-5.5 judging haiku's own answers is self-evaluation.
-- Moss's local query uses default hybrid `alpha=0.8`. The Weaviate baseline was tuned to `alpha=0.6`.
-- Task results are single runs. Agent behaviour varies between runs.
-- Docs gaps I hit along the way are in [`notes/moss-docs-notes.md`](notes/moss-docs-notes.md).
+- llama latencies come from the original project (Groq/Bedrock, not streamed), so I don't compare them directly.
+- The "missing evidence" results rest on about 20 questions per prompt style.
+- Each task ran once, and agent behaviour varies between runs.
+- The trap pages are about a fictional company and use `example.com` as the injection target.
