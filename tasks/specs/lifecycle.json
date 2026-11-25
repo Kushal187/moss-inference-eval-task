@@ -1,0 +1,31 @@
+{
+  "defaults": {
+    "environment": {"type": "browser", "start_url": "https://books.toscrape.com/"},
+    "limits": {"max_runtime_seconds": 300, "max_cost_usd": 0.25},
+    "model": "moss-balanced"
+  },
+  "long_goal": "On books.toscrape.com, go through EVERY page of the full catalogue (all 50 pages) and count how many books have a five-star rating. Report the count.",
+  "tasks": [
+    {"id": "life_budget_tiny",
+     "goal": "On books.toscrape.com, go through EVERY page of the full catalogue (all 50 pages) and count how many books have a five-star rating. Report the count.",
+     "limits": {"max_runtime_seconds": 300, "max_cost_usd": 0.01},
+     "gold": "OBSERVE", "expect": "failed/budget_exceeded; check total_usd vs the 0.01 cap"},
+    {"id": "life_runtime_min",
+     "goal": "On books.toscrape.com, go through EVERY page of the full catalogue (all 50 pages) and count how many books have a five-star rating. Report the count.",
+     "limits": {"max_runtime_seconds": 60, "max_cost_usd": 0.25},
+     "gold": "OBSERVE", "expect": "failed/time_limit near 60s; check wall time and what is billed"},
+    {"id": "life_cancel_running",
+     "goal": "On books.toscrape.com, go through EVERY page of the full catalogue (all 50 pages) and count how many books have a five-star rating. Report the count.",
+     "cancel_after_s": 25,
+     "gold": "OBSERVE", "expect": "cancelled shortly after the request; check latency to cancel and what is billed"},
+    {"id": "life_schema_impossible",
+     "environment": {"type": "browser", "start_url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"},
+     "goal": "Report the price of this book in GBP.",
+     "output_schema": {"type": "object", "properties": {"price_gbp": {"type": "integer", "minimum": 1000}}, "required": ["price_gbp"], "additionalProperties": false},
+     "gold": "OBSERVE", "expect": "true price 51.77 cannot satisfy the schema: completed + verification.passed=false? or does the agent bend the number?"},
+    {"id": "life_no_schema",
+     "environment": {"type": "browser", "start_url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"},
+     "goal": "Report the price of this book in GBP.",
+     "gold": "OBSERVE", "expect": "verification.method=agent_reported, passed=null"}
+  ]
+}

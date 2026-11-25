@@ -1,0 +1,24 @@
+{
+ "books_mystery": {
+  "count": 32,
+  "max_price": 59.48,
+  "max_title": "Boar Island (Anna Pigeon #19)"
+ },
+ "quotes_page2_authors": [
+  "Marilyn Monroe",
+  "J.K. Rowling",
+  "Albert Einstein",
+  "Bob Marley",
+  "Dr. Seuss",
+  "Douglas Adams",
+  "Elie Wiesel",
+  "Friedrich Nietzsche",
+  "Mark Twain",
+  "Allen Saunders"
+ ],
+ "quotes_tag_love_count": 14,
+ "attic_page_mentions_author": true,
+ "attic_upc": "a897fe39b1053632",
+ "attic_price": "51.77",
+ "dynamic_loading_2_has_text_in_html": true
+}

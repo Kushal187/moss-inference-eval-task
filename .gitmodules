@@ -1,0 +1,3 @@
+[submodule "external/finqa"]
+	path = external/finqa
+	url = https://github.com/Kushal187/financial-rag-hallucination-detection.git

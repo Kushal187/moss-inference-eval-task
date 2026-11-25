@@ -1,0 +1,58 @@
+{
+  "defaults": {
+    "environment": {"type": "browser", "start_url": "https://www.sec.gov/edgar/search/"},
+    "limits": {"max_runtime_seconds": 600, "max_cost_usd": 0.4},
+    "model": "moss-balanced",
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "found": {"type": "boolean", "description": "false if the filing or the line item could not be found"},
+        "filing_url": {"type": "string", "description": "URL of the 10-K document the values came from"},
+        "units": {"type": "string", "description": "units as printed in the filing, e.g. 'in millions'"},
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {"period": {"type": "string"}, "value": {"type": "number"}},
+            "required": ["period", "value"]
+          }
+        },
+        "notes": {"type": "string"}
+      },
+      "required": ["found", "values"]
+    }
+  },
+  "goal_template": "Using SEC EDGAR, open {company}'s annual report on Form 10-K for fiscal year {year}. In that filing, find the line item \"{item}\" and report its value for each of these periods: {periods}. Report numbers exactly as printed (keep the filing's units; use negative numbers for values shown in parentheses). If you cannot find the filing or the line item, set found=false and do not guess.",
+  "tasks": [
+    {"id": "edgar_aapl_2014", "finqa_id": "AAPL/2014/page_38.pdf-2", "company": "Apple Inc.", "year": "2014",
+     "item": "Property, plant and equipment, net", "periods": "fiscal 2014 and fiscal 2013",
+     "gold": {"2014": 20624, "2013": 16597}, "units": "millions"},
+    {"id": "edgar_lmt_2014", "finqa_id": "LMT/2014/page_77.pdf-2", "company": "Lockheed Martin Corporation", "year": "2014",
+     "item": "Weighted average common shares outstanding for diluted computations", "periods": "2014 and 2013",
+     "gold": {"2014": 322.4, "2013": 326.5}, "units": "millions"},
+    {"id": "edgar_c_2008", "finqa_id": "C/2008/page_102.pdf-2", "company": "Citigroup Inc.", "year": "2008",
+     "item": "Total Capital (Tier 1 and Tier 2)", "periods": "year-end 2008 and year-end 2007",
+     "gold": {"2008": 108.4, "2007": 121.6}, "units": "billions"},
+    {"id": "edgar_gs_2017", "finqa_id": "GS/2017/page_132.pdf-4", "company": "The Goldman Sachs Group, Inc.", "year": "2017",
+     "item": "Total level 3 financial assets", "periods": "as of December 2017 and as of December 2016",
+     "gold": {"2017": 19201, "2016": 23280}, "units": "millions"},
+    {"id": "edgar_pm_2015", "finqa_id": "PM/2015/page_127.pdf-4", "company": "Philip Morris International Inc.", "year": "2015",
+     "item": "Currency translation adjustments (in the statement of comprehensive earnings)", "periods": "2015, 2014 and 2013",
+     "gold": {"2015": -6129, "2014": -3929, "2013": -2207}, "units": "millions"},
+    {"id": "edgar_mrk_2013", "finqa_id": "MRK/2013/page_125.pdf-1", "company": "Merck & Co., Inc.", "year": "2013",
+     "item": "Unrecognized tax benefits, balance at December 31 (from the reconciliation table)", "periods": "2013, 2012 and 2011",
+     "gold": {"2013": 3503, "2012": 4425, "2011": 4277}, "units": "millions"},
+    {"id": "edgar_cme_2010", "finqa_id": "CME/2010/page_91.pdf-1", "company": "CME Group Inc.", "year": "2010",
+     "item": "Receivables from brokers (a component of other current assets)", "periods": "2010 and 2009",
+     "gold": {"2010": 11.2, "2009": 8.8}, "units": "millions"},
+    {"id": "edgar_jpm_2018", "finqa_id": "JPM/2018/page_90.pdf-5", "company": "JPMorgan Chase & Co.", "year": "2018",
+     "item": "Net interest yield on average interest-earning assets, managed basis", "periods": "2018 and 2017",
+     "gold": {"2018": 2.50, "2017": 2.36}, "units": "percent"},
+    {"id": "edgar_neg_lineitem", "company": "Lockheed Martin Corporation", "year": "2014",
+     "item": "Space Tourism segment net sales", "periods": "2014 and 2013",
+     "gold": "NOT_FOUND", "note": "LMT has a Space Systems segment, not Space Tourism; correct answer is found=false"},
+    {"id": "edgar_neg_future", "company": "Apple Inc.", "year": "2031",
+     "item": "Total net sales", "periods": "fiscal 2031 and fiscal 2030",
+     "gold": "NOT_FOUND", "note": "the filing does not exist yet; correct answer is found=false"}
+  ]
+}
